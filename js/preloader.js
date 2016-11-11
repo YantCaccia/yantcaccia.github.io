@@ -13,7 +13,7 @@
         this.logo.anchor.setTo(0.5, 0.5);
         this.logo.scale.setTo(0.28,0.28);
         
-        this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "Project 1", { font: '150px indieflower', fill: "#ffffff" });
+        this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "ciao 1", { font: '150px indieflower', fill: "#ffffff" });
         this.mainmenu.anchor.setTo(0.5, 0.5);
         
         
