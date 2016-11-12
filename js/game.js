@@ -70,6 +70,14 @@
         });
             
         }
+          
+        if(this.game.device.ios) {
+        
+        gyro.startTracking(function(o) {
+             self.player.body.velocity.x = -(o.x)*1000;
+        });
+            
+        }
       },
       
       
