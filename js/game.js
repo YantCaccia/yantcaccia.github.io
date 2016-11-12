@@ -69,7 +69,7 @@
              self.player.body.velocity.x = -(o.x)*400;
         });
             
-        }
+        };
           
         if(this.game.device.ios) {
         
