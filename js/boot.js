@@ -8,6 +8,9 @@
     preload: function () {
       this.load.image('blocco', 'assets/ostacolo.png');
       this.load.image('asd', 'assets/logo.png');
+      this.game.load.audio('ten', 'assets/sfx.wav');
+      this.game.load.audio('play', 'assets/start1.wav');
+      this.game.load.audio('dead', 'assets/dead.wav');
     },
 
     create: function () {
@@ -20,17 +23,17 @@
         //var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
         
           this.game.scale.minWidth = 320;
-          this.scale.game.minHeight = 480;
-          this.game.scale.maxWidth = 1440; //1440
-          this.scale.game.maxHeight = 2560;//2560
+          this.game.scale.minHeight = 480;
+          this.game.scale.maxWidth = 1280; //1440
+          this.game.scale.maxHeight = 2560;//2560
           this.game.scale.pageAlignHorizontally = true;
           this.game.scale.pageAlignVertically = true;
-        if(this.game.device.desktop){
+        //if(this.game.device.desktop){
           this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        }
-        else {
+        //}
+        //else {
           this.game.scale.refresh(); 
-            }
+            //}
         
         this.game.state.start('preloader');
         }

@@ -7,6 +7,8 @@
 
       create: function () {
           
+          this.start1 = this.game.add.audio('play');
+          
           var playerx = localStorage.getItem('playerx');
           
           this.loogo = this.game.add.sprite(playerx, 1850, 'asd');
@@ -50,6 +52,7 @@
 
     onDown: function () {
         this.game.state.start('game');
+        this.start1.play();
     }
   };
 

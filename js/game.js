@@ -8,6 +8,9 @@
       
       create: function () {
           
+          this.fx = this.game.add.audio('ten');
+          this.dead = this.game.add.audio('dead');
+          
           this.input.onDown.add(this.resume, this);
           
           this.game.time.desiredFps = 60;
@@ -71,10 +74,10 @@
             
         }
           
-        else if(this.game.device.iOS) {
+          if(this.game.device.ios) {
         
         gyro.startTracking(function(o) {
-             self.player.body.velocity.x = (o.x)*1000;
+             self.player.body.velocity.x = -(o.x)*1000;
         });
             
         }
@@ -82,7 +85,7 @@
       
       
       createBaddie: function() {
-
+          
     var item = this.ob.getFirstDead();
 
     item.reset(this.game.rnd.integerInRange(-35, 864), 0); // posiziona lo sprite nel mondo (previous -35, 410)
@@ -105,25 +108,41 @@
     var col = myColors[Math.floor(Math.random() * myColors.length)];
         
     item.tint = col;
+          
+    if(this.score==10) {
+        this.fx.play();
+        }
+      
+    if(this.score==24) {
+        this.fx.play();
+        }
+  
+    if(this.score==40) {
+        this.fx.play();
+        }
+ 
+    if(this.score==99) {
+        this.fx.play();
+        }
 
     },
 
     update: function () {
         
-        if(this.score>2){
+        if(this.score>10){
             
             this.game.time.events.remove(this.pipeGenerator);
             this.pipeGenerator2.start();
         }
         
-        if(this.score>14) {
+        if(this.score>30) {
             
             this.pipeGenerator2.destroy();
             this.pipeGenerator3.start();
             
         }
         
-        if(this.score>24){
+        if(this.score>50){
             
             this.velY = 1400;
         }
@@ -150,9 +169,11 @@
         
             
             gyro.stopTracking();
+            this.dead.play();
             this.game.state.start('menu');
             localStorage.setItem('punti', this.score);
             localStorage.setItem('playerx', this.player.world.x);
+            
             
             if (this.score>bestscore){
                 

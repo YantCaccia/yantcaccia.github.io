@@ -13,7 +13,7 @@
         this.logo.anchor.setTo(0.5, 0.5);
         this.logo.scale.setTo(0.28,0.28);
         
-        this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "Project 1", { font: '150px indieflower', fill: "#ffffff" });
+        this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "Project1", { font: '150px indieflower', fill: "#ffffff" });
         this.mainmenu.anchor.setTo(0.5, 0.5);
         
         
@@ -21,6 +21,8 @@
         this.play.anchor.setTo(0.5, 0.5);
         this.play.inputEnabled = true;
         this.play.events.onInputDown.add(this.playdown, this);
+        
+        this.start = this.game.add.audio('play');
 
     },
 
@@ -32,6 +34,7 @@
       
       playdown: function(){
           this.game.state.start('game');
+          this.start.play();
           }
 
   };
