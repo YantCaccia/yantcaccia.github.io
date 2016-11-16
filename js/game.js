@@ -10,6 +10,8 @@
           
           this.fx = this.game.add.audio('ten');
           this.dead = this.game.add.audio('dead');
+          this.main = this.game.add.audio('main');
+          this.main.play();
           
           this.input.onDown.add(this.resume, this);
           
@@ -59,7 +61,6 @@
           this.pause = this.game.add.text(880, 30,'pause', { font: "50px indieflower", fill: "#FFFFFF" });
           this.pause.inputEnabled = true;
           this.pause.events.onInputDown.add(this.pausedown, this);
-          this.player.events.onInputDown.add(this.resume, this);
 
         gyro.frequency = 5;
           
@@ -77,7 +78,7 @@
           if(this.game.device.ios) {
         
         gyro.startTracking(function(o) {
-             self.player.body.velocity.x = -(o.x)*1000;
+             self.player.body.velocity.x = (o.x)*1000;
         });
             
         }
@@ -109,22 +110,9 @@
         
     item.tint = col;
           
-    if(this.score==10) {
+    if(this.score==10||this.score==30||this.score==50||this.score==99) {
         this.fx.play();
         }
-      
-    if(this.score==24) {
-        this.fx.play();
-        }
-  
-    if(this.score==40) {
-        this.fx.play();
-        }
- 
-    if(this.score==99) {
-        this.fx.play();
-        }
-
     },
 
     update: function () {
@@ -173,7 +161,7 @@
             this.game.state.start('menu');
             localStorage.setItem('punti', this.score);
             localStorage.setItem('playerx', this.player.world.x);
-            
+            this.main.stop();
             
             if (this.score>bestscore){
                 

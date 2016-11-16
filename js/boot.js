@@ -11,6 +11,7 @@
       this.game.load.audio('ten', 'assets/sfx.wav');
       this.game.load.audio('play', 'assets/start1.wav');
       this.game.load.audio('dead', 'assets/dead.wav');
+      this.game.load.audio('main', 'assets/main.ogg');
     },
 
     create: function () {
