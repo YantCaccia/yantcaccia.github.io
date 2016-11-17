@@ -30,12 +30,18 @@
           this.asdf = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 100, "Your best score: " + best, { font: '60px indieflower', fill: "#FFFFFF"});
           this.asdf.anchor.setTo(0.5, 0.5);
           
-          this.asdfg = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 600, "Tap to play again", { font: '60px indieflower', fill: "#FFFFFF"});
+          this.asdfg = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 450, "Tap to play again", { font: '60px indieflower', fill: "#FFFFFF"});
           
           this.asdfg.inputEnabled = true;
           this.asdfg.events.onInputDown.add(this.onDown, this);
           this.asdfg.anchor.setTo(0.5, 0.5);
           
+          
+          this.asdfgh = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 600, "Main menu", { font: '60px indieflower', fill: "#FFFFFF"});
+          
+          this.asdfgh.inputEnabled = true;
+          this.asdfgh.events.onInputDown.add(this.onDown1, this);
+          this.asdfgh.anchor.setTo(0.5, 0.5);
           //N.B. previuos font size=32px
         
         },
@@ -53,6 +59,10 @@
     onDown: function () {
         this.game.state.start('game');
         this.start1.play();
+    },
+      
+      onDown1: function () {
+        this.game.state.start('preloader');
     }
   };
 

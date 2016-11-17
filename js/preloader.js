@@ -22,21 +22,61 @@
         this.play.inputEnabled = true;
         this.play.events.onInputDown.add(this.playdown, this);
         
+        this.audiooff = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 200, "Mute audio", { font: '100px indieflower', fill: "#ffffff" });
+        this.audiooff.anchor.setTo(0.5, 0.5);
+        this.audiooff.inputEnabled = true;
+        this.audiooff.events.onInputDown.add(this.mute, this);
+        this.audiooff.visible=true;
+        
+        this.audioon = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 300, "Unmute audio", { font: '100px indieflower', fill: "#ffffff" });
+        this.audioon.anchor.setTo(0.5, 0.5);
+        this.audioon.inputEnabled = true;
+        this.audioon.events.onInputDown.add(this.unmute, this);
+        this.audioon.visible=false;
+        
         this.start = this.game.add.audio('play');
 
     },
-
-    update: function () {
-        
-        if (this.jumpButton.isDown)
-          {this.game.state.start('game');}
-    },
+      
+      mute: function(){
+         this.game.sound.mute = true;
+         //this.audiooff.visible=false;
+         //this.audioon.visible=true;
+          },
+      
+      unmute: function(){
+         this.game.sound.mute = false;
+         //this.audiooff.visible=true;
+         //this.audioon.visible=false;
+          },
       
       playdown: function(){
           this.game.state.start('game');
           this.start.play();
-          }
+          },
 
+    update: function () {
+        
+      /*  if (this.jumpButton.isDown){
+          
+            this.game.state.start('game');
+    },*/
+      
+      if (this.game.sound.mute==false){
+          
+          this.audiooff.visible=true;
+          this.audioon.visible=false;
+      }
+      
+      else if (this.game.sound.mute==true){
+      
+       this.audioon.visible=true;
+       this.audiooff.visible=false;
+  
+      }
+
+  },
+      
   };
 
   window['antonio'] = window['antonio'] || {};
