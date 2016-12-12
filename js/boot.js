@@ -11,17 +11,15 @@
       this.game.load.audio('ten', 'assets/sfx.wav');
       this.game.load.audio('play', 'assets/start1.wav');
       this.game.load.audio('dead', 'assets/dead.wav');
-      this.game.load.audio('main', ['assets/main.ogg', 'assets/main.m4a']);
+      this.game.load.audio('main', ['assets/main.ogg', 'assets/main.mp3']);
     },
 
     create: function () {
         
-        this.game.stage.backgroundColor = '#212121'; //212121
+        this.game.stage.backgroundColor = '#13293D'; //212121  353535 13293D
          
         this.game.forceSingleUpdate = true; // permette al custom font di essere letto chiaramente
         this.game.renderer.renderSession.roundPixels = true; // permette al custom font di essere letto chiaramente
-        
-        //var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
         
           this.game.scale.minWidth = 320;
           this.game.scale.minHeight = 480;

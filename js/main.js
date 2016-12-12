@@ -7,6 +7,7 @@ window.addEventListener('load', function () {
   game.state.add('preloader', ns.Preloader);
   game.state.add('menu', ns.Menu);
   game.state.add('game', ns.Game);
+  game.state.add('credits', ns.Credits);
   game.state.start('boot');
 }, false);
 

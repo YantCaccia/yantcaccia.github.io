@@ -7,42 +7,35 @@
 
       create: function () {
           
-          this.start1 = this.game.add.audio('play');
-          
-          var playerx = localStorage.getItem('playerx');
-          
-          this.loogo = this.game.add.sprite(playerx, 1850, 'asd');
-          this.loogo.anchor.setTo(0.5, 0.5);
-          this.loogo.scale.setTo(0.28,0.28);
-          
           this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-            
-          var punto = localStorage.getItem('punti');
+          
           var best = localStorage.getItem('bestscore');
           
-          this.go = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "Game over!", { font: '120px indieflower', fill: "#FFFFFF"});
+          this.go = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "Game over", { font: '130px indieflower', fill: "#F15946"});
           this.go.anchor.setTo(0.5, 0.5);
           
-          this.asd = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 50, "Your score: " + punto, { font: '60px indieflower', fill: "#FFFFFF"});
+          this.high = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 400, "New high score!", { font: '100px indieflower', fill: "#2684EF"});
+          this.high.anchor.setTo(0.5, 0.5);
+          if (score>best){this.high.visible = true;}
+          else if (score<best){this.high.visible=false;}
+          
+          this.asd = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 50, "Your score: " + score, { font: '60px indieflower', fill: "#F9C22E"});
           this.asd.anchor.setTo(0.5, 0.5);
         
           
-          this.asdf = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 100, "Your best score: " + best, { font: '60px indieflower', fill: "#FFFFFF"});
+          this.asdf = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 100, "Your best score: " + best, { font: '60px indieflower', fill: "#2684EF"});
           this.asdf.anchor.setTo(0.5, 0.5);
           
-          this.asdfg = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 450, "Tap to play again", { font: '60px indieflower', fill: "#FFFFFF"});
-          
+          this.asdfg = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 450, "Tap to play again", { font: '60px indieflower', fill: "#1BBA7D"});
           this.asdfg.inputEnabled = true;
           this.asdfg.events.onInputDown.add(this.onDown, this);
           this.asdfg.anchor.setTo(0.5, 0.5);
           
           
-          this.asdfgh = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 600, "Main menu", { font: '60px indieflower', fill: "#FFFFFF"});
-          
+          this.asdfgh = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 600, "Main menu", { font: '60px indieflower', fill: "#F15946"});
           this.asdfgh.inputEnabled = true;
           this.asdfgh.events.onInputDown.add(this.onDown1, this);
           this.asdfgh.anchor.setTo(0.5, 0.5);
-          //N.B. previuos font size=32px
         
         },
 
@@ -58,10 +51,11 @@
 
     onDown: function () {
         this.game.state.start('game');
-        this.start1.play();
+        start.play();
     },
       
       onDown1: function () {
+        this.game.stage.removeChild(player);
         this.game.state.start('preloader');
     }
   };
