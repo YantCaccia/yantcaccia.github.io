@@ -8,12 +8,18 @@
       
       create: function () {
           
-          this.levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Level Up!", { font: '150px indieflower', fill: "#FFFFFF"});
-          this.levelup.anchor.setTo(0.5, 0.5);
-          this.levelup.angle = -20;
-          this.levelup.alpha = 0;
+          controllo = 0;
           
-          this.fx = this.game.add.audio('ten');
+          levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Level Up!", { font: '150px indieflower', fill: "#FFFFFF"});
+          levelup.anchor.setTo(0.5, 0.5);
+          levelup.angle = -20;
+          levelup.alpha = 0;
+          
+          this.plus = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 600, "+5!", { font: '190px indieflower', fill: "#FFFFFF"});
+          this.plus.anchor.setTo(0.5, 0.5);
+          this.plus.alpha = 0;
+          
+          fx = this.game.add.audio('ten');
           this.dead = this.game.add.audio('dead');
           this.main = this.game.add.audio('main');
           this.main.play();
@@ -40,6 +46,8 @@
           this.leftwall.scale.setTo(0.28, 0.28);
           this.leftwall.visible = false;
           velY = 1200;
+          
+          this.powerup = this.game.time.events.loop(7000, this.pugenerator, this); //(Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000)
 
 
           this.pipeGenerator = this.game.time.events.loop(750, this.createBaddie, this);  //determina col primo attributo tra le parentesi ogni quanto cade un blocco
@@ -54,9 +62,11 @@
           this.pipeGenerator4.loop(320, this.createBaddie, this);
           
           this.ob = this.game.add.physicsGroup();
+          this.pu = this.game.add.physicsGroup();
 
           //  aggiunge 5 sprite al gruppo
           this.ob.createMultiple(5, 'blocco', 0, false);
+          this.pu.createMultiple(1, 'pu', 0, false);
 
           
           score = -2;
@@ -108,46 +118,55 @@
     item.body.immovable = true;
         
         
-    var myColors = ["0x1BBA7D", "0xF15946", "0xF9C22E", "0x2684EF"]; //"0x4285F4", "0x34A853", "0xFBBC05", "0xEA4335" 27B9DD
-    var col = myColors[Math.floor(Math.random() * myColors.length)];
+    var myColors = ["0x1BBA7D", "0xF15946", "0x2684EF"]; //"0x4285F4", "0x34A853", "0xFBBC05", "0xEA4335" 27B9DD
+    col = myColors[Math.floor(Math.random() * myColors.length)];
         
     item.tint = col;
     this.labelScore.tint = col;
           
-    if(score==10||score==30||score==50||score==99) {
-        this.fx.play();
-        this.game.add.tween(this.levelup).to({alpha: 1}, 100, Phaser.Easing.Linear.None, true);
-        this.lufo = this.game.time.create(false);
-        this.lufo.add(1500, this.ludi, this);
-        this.lufo.start();
-        this.levelup.tint = col;
-        }
     },
+      
+      contenuto: function(){
+                fx.play();
+                levelup.alpha = 1;
+                lufo = this.game.time.create(false);
+                lufo.add(1500, this.ludi, this);
+                lufo.start();
+                levelup.tint = col;
+      },
 
     update: function () {
         
-        if(score>10){
+        if(score>10 && controllo==0){
             
             this.game.time.events.remove(this.pipeGenerator);
             this.pipeGenerator2.start();
+            this.contenuto();
+            controllo = 1;
         }
         
-        if(score>30) {
+        if(score>50 && controllo==1) {
             
             this.pipeGenerator2.destroy();
             this.pipeGenerator3.start();
+            this.contenuto();
+            controllo = 2;
             
         }
         
-        if(score>50){
+        if(score>90 && controllo==2){
             
             velY = 1400;
+            this.contenuto();
+            controllo = 3;
         }
         
-        if(score>99){
+        if(score>120 && controllo==3){
             
             this.pipeGenerator3.destroy();
             this.pipeGenerator4.start();
+            this.contenuto();
+            controllo = 4;
             
         }
         
@@ -209,6 +228,19 @@
                 player.body.x = 940; //previous 499
             
           }
+        
+        if(this.game.physics.arcade.collide(player, this.pu)){
+        
+                fx.play();
+                score=score+5;
+                this.plus.alpha = 1;
+                this.boh = this.game.time.create(false);
+                this.boh.add(1500, this.fp, this);
+                this.boh.start();
+                this.ppu.kill();
+                this.plus.tint = col;
+            
+          }
 
 
     },
@@ -228,10 +260,34 @@
       },
           
       
-ludi: function(){
+      ludi: function(){
     
-    this.game.add.tween(this.levelup).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+    this.game.add.tween(levelup).to({alpha: 0}, 150, Phaser.Easing.Linear.None, true);
 },
+      
+      fp: function(){
+          
+    this.game.add.tween(this.plus).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
+},
+      
+      pugenerator: function(){
+          
+    this.ppu = this.pu.getFirstDead();
+
+    this.ppu.reset(this.game.rnd.integerInRange(-35, 864), 0); // posiziona lo sprite nel mondo (previous -35, 410)
+
+
+    this.ppu.body.velocity.y = (velY + 400);
+
+    this.ppu.checkWorldBounds = true;
+    this.ppu.outOfBoundsKill = true;
+    this.ppu.scale.setTo(1.4, 1.2);
+          
+    this.powerup.delay = (Math.floor(Math.random() * (17000 - 10000 + 1)) + 10000);
+    
+    this.ppu.tint = 0xF9C22E;
+          
+      },
       
 
   };

@@ -7,6 +7,7 @@
       
     preload: function () {
       this.load.image('blocco', 'assets/ostacolo.png');
+      this.load.image('pu', 'assets/pu.png');
       this.load.image('asd', 'assets/logo.png');
       this.game.load.audio('ten', 'assets/sfx.wav');
       this.game.load.audio('play', 'assets/start1.wav');
@@ -17,6 +18,10 @@
     create: function () {
         
         this.game.stage.backgroundColor = '#13293D'; //212121  353535 13293D
+        
+        player = this.game.make.sprite(this.game.world.centerX, 1850, 'asd');
+        player.anchor.setTo(0.5, 0.5);
+        player.scale.setTo(0.28, 0.28);
          
         this.game.forceSingleUpdate = true; // permette al custom font di essere letto chiaramente
         this.game.renderer.renderSession.roundPixels = true; // permette al custom font di essere letto chiaramente

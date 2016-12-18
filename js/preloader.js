@@ -9,10 +9,7 @@
         
         this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         
-        player = this.game.make.sprite(this.game.world.centerX, 1850, 'asd');
         this.game.stage.addChild(player);
-        player.anchor.setTo(0.5, 0.5);
-        player.scale.setTo(0.28, 0.28);
         
         this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "Project1", { font: '150px indieflower', fill: "#F9C22E" });
         this.mainmenu.anchor.setTo(0.5, 0.5);

@@ -1,6 +1,11 @@
+var col;
 var bestscore = 0;
 var bestscore = localStorage.getItem('bestscore');
 var score;
 var player;
 var velY;
 var start;
+var fx;
+var levelup;
+var lufo;
+var controllo = 0;
