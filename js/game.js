@@ -15,9 +15,10 @@
           levelup.angle = -20;
           levelup.alpha = 0;
           
-          this.plus = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 600, "+5!", { font: '190px indieflower', fill: "#FFFFFF"});
+          this.plus = this.game.add.text(90, 155, "", { font: '75px indieflower', fill: "#FFFFFF"});
+          this.plus.angle = -10
           this.plus.anchor.setTo(0.5, 0.5);
-          this.plus.alpha = 0;
+          this.plus.alpha = 1;
           
           fx = this.game.add.audio('ten');
           this.dead = this.game.add.audio('dead');
@@ -40,38 +41,31 @@
           this.game.physics.enable([player, this.rightwall, this.leftwall], Phaser.Physics.ARCADE);
           player.body.collideWorldBounds=true;
           this.rightwall.body.immovable = true;
-          this.rightwall.scale.setTo(0.28, 0.28);
+          //this.rightwall.scale.setTo(0.28, 0.28);
           this.rightwall.visible = false;
           this.leftwall.body.immovable = true;
-          this.leftwall.scale.setTo(0.28, 0.28);
+          //this.leftwall.scale.setTo(0.28, 0.28);
           this.leftwall.visible = false;
           velY = 1200;
           
-          this.powerup = this.game.time.events.loop(7000, this.pugenerator, this); //(Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000)
-
+          this.powerup = this.game.time.events.loop(4000, this.pugenerator, this); //(Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000)
+          
+          this.greencoin = this.game.time.events.loop((Math.floor(Math.random() * (20000 - 15000 + 1)) + 15000), this.teest, this); //(Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000)
 
           this.pipeGenerator = this.game.time.events.loop(750, this.createBaddie, this);  //determina col primo attributo tra le parentesi ogni quanto cade un blocco
-          
-          this.pipeGenerator2 = this.game.time.create(false);
-          this.pipeGenerator2.loop(650, this.createBaddie, this);
-          
-          this.pipeGenerator3 = this.game.time.create(false);
-          this.pipeGenerator3.loop(400, this.createBaddie, this);
-          
-          this.pipeGenerator4 = this.game.time.create(false);
-          this.pipeGenerator4.loop(320, this.createBaddie, this);
           
           this.ob = this.game.add.physicsGroup();
           this.pu = this.game.add.physicsGroup();
 
           //  aggiunge 5 sprite al gruppo
           this.ob.createMultiple(5, 'blocco', 0, false);
-          this.pu.createMultiple(1, 'pu', 0, false);
+          this.pu.createMultiple(6, 'pu', 0, false);
+          //this.pu.scale.setTo(0.10, 0.10);
 
           
           score = -2;
           this.labelScore = this.game.add.text(30, 30,'', { font: "60px indieflower", fill: "#FFFFFF" }); //#F9C22E
-          this.pause = this.game.add.text(880, 30,'pause', { font: "50px indieflower", fill: "#F15946" });
+          this.pause = this.game.add.text(880, 30,'pause', { font: "50px indieflower", fill: "#ffffff" });
           this.pause.inputEnabled = true;
           this.pause.events.onInputDown.add(this.pausedown, this);
 
@@ -113,58 +107,57 @@
     score += 1;
         
         
-    item.scale.setTo(4, 2); //previuos 2, 1
+    item.scale.setTo(0.3, 0.223); //previuos 2, 1 //4,2
 
     item.body.immovable = true;
         
         
-    var myColors = ["0x1BBA7D", "0xF15946", "0x2684EF"]; //"0x4285F4", "0x34A853", "0xFBBC05", "0xEA4335" 27B9DD
+    var myColors = ["0xdd210d", "0x0a427f", "0x44aa00"]; //"0x4285F4", "0x34A853", "0xFBBC05", "0xEA4335" 27B9DD    //"0x1BBA7D", "0xF15946", "0x2684EF"
     col = myColors[Math.floor(Math.random() * myColors.length)];
         
-    item.tint = col;
-    this.labelScore.tint = col;
+    //item.tint = col;
+    this.labelScore.tint = 0xffffff;
           
     },
       
       contenuto: function(){
-                fx.play();
+                //fx.play();
                 levelup.alpha = 1;
-                lufo = this.game.time.create(false);
-                lufo.add(1500, this.ludi, this);
-                lufo.start();
-                levelup.tint = col;
+                this.game.add.tween(levelup).to({alpha: 0}, 700, Phaser.Easing.Linear.None, true, 1000);
       },
 
     update: function () {
         
+        //this.token = this.pu.getBottom();
+        //this.token.tint = 0x212121;
+        
         if(score>10 && controllo==0){
             
-            this.game.time.events.remove(this.pipeGenerator);
-            this.pipeGenerator2.start();
             this.contenuto();
             controllo = 1;
+            this.powerup.delay = 2000;
         }
         
-        if(score>50 && controllo==1) {
+        if(score>40 && controllo==1) {
             
-            this.pipeGenerator2.destroy();
-            this.pipeGenerator3.start();
+            this.pipeGenerator.delay = 400;
             this.contenuto();
             controllo = 2;
+            this.powerup.delay = 1400;
             
         }
         
-        if(score>90 && controllo==2){
+        if(score>75 && controllo==2){
             
             velY = 1400;
             this.contenuto();
             controllo = 3;
+            this.powerup.delay = 900;
         }
         
-        if(score>120 && controllo==3){
+        if(score>110 && controllo==3){
             
-            this.pipeGenerator3.destroy();
-            this.pipeGenerator4.start();
+            this.pipeGenerator.delay = 320;
             this.contenuto();
             controllo = 4;
             
@@ -229,18 +222,14 @@
             
           }
         
-        if(this.game.physics.arcade.collide(player, this.pu)){
-        
-                fx.play();
-                score=score+5;
-                this.plus.alpha = 1;
-                this.boh = this.game.time.create(false);
-                this.boh.add(1500, this.fp, this);
-                this.boh.start();
-                this.ppu.kill();
-                this.plus.tint = col;
+        if(this.game.physics.arcade.collide(this.pu, player)){
             
-          }
+            this.ppu.kill();
+            this.scooore();
+            fx.play();
+            this.plus.alpha = 1;
+            this.tweeen = this.game.add.tween(this.plus).to({alpha: 0}, 300, Phaser.Easing.Linear.None, true, 1000);
+        }
 
 
     },
@@ -258,17 +247,6 @@
           this.game.paused = false;
           
       },
-          
-      
-      ludi: function(){
-    
-    this.game.add.tween(levelup).to({alpha: 0}, 150, Phaser.Easing.Linear.None, true);
-},
-      
-      fp: function(){
-          
-    this.game.add.tween(this.plus).to({alpha: 0}, 1500, Phaser.Easing.Linear.None, true);
-},
       
       pugenerator: function(){
           
@@ -277,17 +255,29 @@
     this.ppu.reset(this.game.rnd.integerInRange(-35, 864), 0); // posiziona lo sprite nel mondo (previous -35, 410)
 
 
-    this.ppu.body.velocity.y = (velY + 400);
+    this.ppu.body.velocity.y = (velY + 900);
 
     this.ppu.checkWorldBounds = true;
     this.ppu.outOfBoundsKill = true;
-    this.ppu.scale.setTo(1.4, 1.2);
-          
-    this.powerup.delay = (Math.floor(Math.random() * (17000 - 10000 + 1)) + 10000);
     
-    this.ppu.tint = 0xF9C22E;
+    this.ppu.tint = 0xf9c22e;
           
       },
+      
+      teest: function(){
+        this.ppu.tint = 0x44aa00;
+        this.greencoin.delay = (Math.floor(Math.random() * (18000 - 13000 + 1)) + 13000);
+      },
+          
+      scooore: function(){
+                 if(this.ppu.tint == 0xf9c22e){
+                    score=score+2;
+                    this.plus.setText("+2!"); }
+            
+            else if(this.ppu.tint == 0x44aa00){
+                    score=score+15;
+                    this.plus.setText("+15!"); }
+          },
       
 
   };

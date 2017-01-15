@@ -9,3 +9,8 @@ var fx;
 var levelup;
 var lufo;
 var controllo = 0;
+var rosso = "#dd210d";
+var blu = "#0a427f";
+var marrone = "#63220b";
+var giallo = "#F9C22E";
+var verde = "#44aa00";

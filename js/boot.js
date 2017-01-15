@@ -6,9 +6,9 @@
   Boot.prototype = {
       
     preload: function () {
-      this.load.image('blocco', 'assets/ostacolo.png');
-      this.load.image('pu', 'assets/pu.png');
-      this.load.image('asd', 'assets/logo.png');
+      this.load.image('blocco', 'assets/brick1.png');
+      this.load.image('pu', 'assets/coin1.png');
+      this.load.image('asd', 'assets/player.png');
       this.game.load.audio('ten', 'assets/sfx.wav');
       this.game.load.audio('play', 'assets/start1.wav');
       this.game.load.audio('dead', 'assets/dead.wav');
@@ -17,11 +17,11 @@
 
     create: function () {
         
-        this.game.stage.backgroundColor = '#13293D'; //212121  353535 13293D
+        this.game.stage.backgroundColor = '#2495F2'; //212121  353535 13293D 4d7cff
         
         player = this.game.make.sprite(this.game.world.centerX, 1850, 'asd');
         player.anchor.setTo(0.5, 0.5);
-        player.scale.setTo(0.28, 0.28);
+        //player.scale.setTo(0.28, 0.28);
          
         this.game.forceSingleUpdate = true; // permette al custom font di essere letto chiaramente
         this.game.renderer.renderSession.roundPixels = true; // permette al custom font di essere letto chiaramente
