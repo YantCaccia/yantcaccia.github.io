@@ -10,12 +10,12 @@
           
           controllo = 0;
           
-          levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Level Up!", { font: '150px indieflower', fill: "#FFFFFF"});
+          levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Level Up!", { font: '150px indieflower', fill: blu});
           levelup.anchor.setTo(0.5, 0.5);
           levelup.angle = -20;
           levelup.alpha = 0;
           
-          this.plus = this.game.add.text(90, 155, "", { font: '75px indieflower', fill: "#FFFFFF"});
+          this.plus = this.game.add.text(90, 155, "", { font: '75px indieflower', fill: blu});
           this.plus.angle = -10
           this.plus.anchor.setTo(0.5, 0.5);
           this.plus.alpha = 1;
@@ -60,13 +60,17 @@
           //  aggiunge 5 sprite al gruppo
           this.ob.createMultiple(5, 'blocco', 0, false);
           this.pu.createMultiple(6, 'pu', 0, false);
-          //this.pu.scale.setTo(0.10, 0.10);
+          
+          this.ppu = this.pu.getFirstDead();
+          this.ppu.tint = 0x44aa00;
+
+    this.ppu.reset(600, 300, 0);
 
           
           score = -2;
-          this.labelScore = this.game.add.text(30, 30,'', { font: "60px indieflower", fill: "#FFFFFF" }); //#F9C22E
-          this.pause = this.game.add.text(880, 30,'pause', { font: "50px indieflower", fill: "#ffffff" });
-          this.pause.inputEnabled = true;
+          this.labelScore = this.game.add.text(30, 30,'', { font: "60px indieflower", fill: blu }); //#F9C22E
+          this.pause = this.game.add.text(880, 30,'pause', { font: "50px indieflower", fill: blu });
+          this.pause.inputEnabled = true
           this.pause.events.onInputDown.add(this.pausedown, this);
 
         gyro.frequency = 5;

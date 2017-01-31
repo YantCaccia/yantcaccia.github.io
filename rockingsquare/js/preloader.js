@@ -11,11 +11,23 @@
         
         this.game.stage.addChild(player);
         
-        this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "Project1", { font: '150px indieflower', fill: giallo }); //F9C22E
+        this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 770, "Rocking", { font: '195px indieflower', fill: giallo }); //F9C22E
         this.mainmenu.anchor.setTo(0.5, 0.5);
+        this.mainmenu.angle = -2;
+        
+        this.test = this.game.add.tween(this.mainmenu).to( { angle: 2 }, 235, "Linear", true, 0, -1);
+        this.test.yoyo(true, 0);
+       
+        
+        this.mainmenu1 = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 580, "Square", { font: '180px indieflower', fill: giallo }); //F9C22E
+        this.mainmenu1.anchor.setTo(0.5, 0.5);
+        this.mainmenu1.angle = 2;
+        
+        this.test1 = this.game.add.tween(this.mainmenu1).to( { angle: -2 }, 235, "Linear", true, 0, -1);
+        this.test1.yoyo(true, 0);
         
         
-        this.play = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Play", { font: '100px indieflower', fill: rosso }); //F15946
+        this.play = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Let's play!", { font: '100px indieflower', fill: rosso }); //F15946
         this.play.anchor.setTo(0.5, 0.5);
         this.play.inputEnabled = true;
         this.play.events.onInputDown.add(this.playdown, this);
@@ -35,6 +47,9 @@
         this.tutorial.anchor.setTo(0.5, 0.5);
         this.tutorial.inputEnabled = true;
         this.tutorial.events.onInputDown.add(this.showtutorial, this);
+        
+        this.tutorial1 = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 465, "(do you really need one?)", { font: '25px indieflower', fill: verde });
+        this.tutorial1.anchor.setTo(0.5, 0.5);
         
         start = this.game.add.audio('play');
 

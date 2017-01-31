@@ -11,8 +11,12 @@
           
           var best = localStorage.getItem('bestscore');
           
-          this.go = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "Game over", { font: '130px indieflower', fill: rosso});
+          this.go = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 700, "Game over!", { font: '130px indieflower', fill: blu});
           this.go.anchor.setTo(0.5, 0.5);
+          
+          this.smile = this.game.add.text(this.game.world.centerX + 450, this.game.world.centerY - 590, ":(", { font: '90px indieflower', fill: blu});
+          this.smile.anchor.setTo(0.5, 0.5);
+          this.smile.angle = 70;
           
           this.high = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 400, "New high score!", { font: '100px indieflower', fill: blu});
           this.high.anchor.setTo(0.5, 0.5);
@@ -23,16 +27,16 @@
           this.asd.anchor.setTo(0.5, 0.5);
         
           
-          this.asdf = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 100, "Your best score: " + best, { font: '60px indieflower', fill: blu});
+          this.asdf = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 100, "Your best score: " + best, { font: '60px indieflower', fill: verde});
           this.asdf.anchor.setTo(0.5, 0.5);
           
-          this.asdfg = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 450, "Tap to play again", { font: '60px indieflower', fill: verde}); //1BBA7D
+          this.asdfg = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 450, "Tap to play again", { font: '60px indieflower', fill: rosso}); //1BBA7D
           this.asdfg.inputEnabled = true;
           this.asdfg.events.onInputDown.add(this.onDown, this);
           this.asdfg.anchor.setTo(0.5, 0.5);
           
           
-          this.asdfgh = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 600, "Main menu", { font: '60px indieflower', fill: rosso});
+          this.asdfgh = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 600, "Main menu", { font: '60px indieflower', fill: marrone});
           this.asdfgh.inputEnabled = true;
           this.asdfgh.events.onInputDown.add(this.onDown1, this);
           this.asdfgh.anchor.setTo(0.5, 0.5);
