@@ -60,9 +60,6 @@
           //  aggiunge 5 sprite al gruppo
           this.ob.createMultiple(5, 'blocco', 0, false);
           this.pu.createMultiple(6, 'pu', 0, false);
-          
-          this.ppu = this.pu.getFirstDead();
-          this.ppu.tint = 0x44aa00;
 
     this.ppu.reset(600, 300, 0);
 
