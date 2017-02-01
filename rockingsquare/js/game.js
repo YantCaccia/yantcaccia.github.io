@@ -64,8 +64,6 @@
           this.ppu = this.pu.getFirstDead();
           this.ppu.tint = 0x44aa00;
 
-    this.ppu.reset(600, 300, 0);
-
           
           score = -2;
           this.labelScore = this.game.add.text(30, 30,'', { font: "60px indieflower", fill: blu }); //#F9C22E
