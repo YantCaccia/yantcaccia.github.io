@@ -39,8 +39,15 @@
           this.game.scale.refresh(); 
             //}
         
+       if(this.game.device.android){
+            
+            this.game.state.start('androidstate');
+       }
+        
+        else{
         this.game.state.start('preloader');
         }
+    }
   };
 
   window['antonio'] = window['antonio'] || {};
