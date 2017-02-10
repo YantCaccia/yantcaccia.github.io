@@ -29,57 +29,48 @@
           this.input.onDown.add(this.resume, this);
           
           this.game.time.desiredFps = 60;
-          
-          this.cursors = this.game.input.keyboard.createCursorKeys();
 
           this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-          this.game.world.setBounds(0, 0, 1080, 1920); //limiti mondo
+          this.game.world.setBounds(0, 0, 1080, 1920);
         
-          this.rightwall = this.game.add.sprite(1079, 1900, 'asd'); // previuos 499, 850
-          this.leftwall = this.game.add.sprite(-139, 1900, 'asd');  //previous -49, 850
+          this.rightwall = this.game.add.sprite(1079, 1900, 'asd');
+          this.leftwall = this.game.add.sprite(-139, 1900, 'asd');
           this.game.physics.enable([player, this.rightwall, this.leftwall], Phaser.Physics.ARCADE);
           player.body.collideWorldBounds=true;
           this.rightwall.body.immovable = true;
-          //this.rightwall.scale.setTo(0.28, 0.28);
           this.rightwall.visible = false;
           this.leftwall.body.immovable = true;
-          //this.leftwall.scale.setTo(0.28, 0.28);
           this.leftwall.visible = false;
           velY = 1200;
           
-          this.powerup = this.game.time.events.loop(4000, this.pugenerator, this); //(Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000)
+          this.powerup = this.game.time.events.loop(4000, this.pugenerator, this);
           
-          this.greencoin = this.game.time.events.loop((Math.floor(Math.random() * (20000 - 15000 + 1)) + 15000), this.teest, this); //(Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000)
+          this.greencoin = this.game.time.events.loop((Math.floor(Math.random() * (17000 - 10000 + 1)) + 10000), this.teest, this);
 
-          this.pipeGenerator = this.game.time.events.loop(750, this.createBaddie, this);  //determina col primo attributo tra le parentesi ogni quanto cade un blocco
+          this.pipeGenerator = this.game.time.events.loop(750, this.createBaddie, this);
           
           this.ob = this.game.add.physicsGroup();
           this.pu = this.game.add.physicsGroup();
+          this.gpu = this.game.add.physicsGroup();
 
-          //  aggiunge 5 sprite al gruppo
           this.ob.createMultiple(5, 'blocco', 0, false);
           this.pu.createMultiple(6, 'pu', 0, false);
-          
-          this.ppu = this.pu.getFirstDead();
-          this.ppu.tint = 0x44aa00;
+          this.gpu.createMultiple(6, 'pu', 0, false);
 
           
           score = -2;
-          this.labelScore = this.game.add.text(30, 30,'', { font: "60px indieflower", fill: blu }); //#F9C22E
+          this.labelScore = this.game.add.text(30, 30,'', { font: "60px indieflower", fill: blu });
           this.pause = this.game.add.text(880, 30,'pause', { font: "50px indieflower", fill: blu });
           this.pause.inputEnabled = true
           this.pause.events.onInputDown.add(this.pausedown, this);
 
         gyro.frequency = 5;
-          
-          //WP=*200)+31 IOS=*1000
         
-        
-        if(this.game.device.android) {
+          if(this.game.device.WP) {
         
         gyro.startTracking(function(o) {
-             player.body.velocity.x = -(o.x)*400;
+             player.body.velocity.x = (o.x)*200;
         });
             
         }
@@ -87,15 +78,7 @@
           if(this.game.device.iOS) {
         
         gyro.startTracking(function(o) {
-             player.body.velocity.x = (o.x)*500;
-        });
-            
-        }
-          
-          if(this.game.device.WP) {
-        
-        gyro.startTracking(function(o) {
-             player.body.velocity.x = (o.x)*200;
+             player.body.velocity.x = (o.x)*3300;
         });
             
         }
@@ -106,7 +89,7 @@
           
     var item = this.ob.getFirstDead();
 
-    item.reset(this.game.rnd.integerInRange(-35, 864), 0); // posiziona lo sprite nel mondo (previous -35, 410)
+    item.reset(this.game.rnd.integerInRange(-35, 864), 0);
 
 
     item.body.velocity.y = velY;
@@ -121,25 +104,17 @@
 
     item.body.immovable = true;
         
-        
-    var myColors = ["0xdd210d", "0x0a427f", "0x44aa00"]; //"0x4285F4", "0x34A853", "0xFBBC05", "0xEA4335" 27B9DD    //"0x1BBA7D", "0xF15946", "0x2684EF"
-    col = myColors[Math.floor(Math.random() * myColors.length)];
-        
-    //item.tint = col;
     this.labelScore.tint = 0xffffff;
           
     },
       
       contenuto: function(){
-                //fx.play();
+
                 levelup.alpha = 1;
                 this.game.add.tween(levelup).to({alpha: 0}, 700, Phaser.Easing.Linear.None, true, 1000);
       },
 
     update: function () {
-        
-        //this.token = this.pu.getBottom();
-        //this.token.tint = 0x212121;
         
         if(score>10 && controllo==0){
             
@@ -185,8 +160,7 @@
         
         player.body.velocity.x = 0;
         
-        
-          if (this.cursors.left.isDown)
+        if (this.cursors.left.isDown)
           {
               player.body.velocity.x = -1600;
           }
@@ -197,7 +171,7 @@
           }
         
         
-        if(this.game.physics.arcade.collide(this.ob, player)){  //se il player tocca un blocco, il player sparisce
+        if(this.game.physics.arcade.collide(this.ob, player)){
         
             
             gyro.stopTracking();
@@ -228,14 +202,27 @@
         if(this.game.physics.arcade.collide(this.leftwall, player)){
         
             
-                player.body.x = 940; //previous 499
+                player.body.x = 940;
             
           }
         
         if(this.game.physics.arcade.collide(this.pu, player)){
             
             this.ppu.kill();
-            this.scooore();
+            //this.scooore();
+            score=score+2;
+            this.plus.setText("+2!");
+            fx.play();
+            this.plus.alpha = 1;
+            this.tweeen = this.game.add.tween(this.plus).to({alpha: 0}, 300, Phaser.Easing.Linear.None, true, 1000);
+        }
+        
+        if(this.game.physics.arcade.collide(this.gpu, player)){
+            
+            this.gppu.kill();
+            //this.scooore();
+            score=score+15;
+            this.plus.setText("+15!");
             fx.play();
             this.plus.alpha = 1;
             this.tweeen = this.game.add.tween(this.plus).to({alpha: 0}, 300, Phaser.Easing.Linear.None, true, 1000);
@@ -262,7 +249,7 @@
           
     this.ppu = this.pu.getFirstDead();
 
-    this.ppu.reset(this.game.rnd.integerInRange(-35, 864), 0); // posiziona lo sprite nel mondo (previous -35, 410)
+    this.ppu.reset(this.game.rnd.integerInRange(-35, 864), 0);
 
 
     this.ppu.body.velocity.y = (velY + 900);
@@ -275,11 +262,21 @@
       },
       
       teest: function(){
-        this.ppu.tint = 0x44aa00;
-        this.greencoin.delay = (Math.floor(Math.random() * (18000 - 13000 + 1)) + 13000);
+        
+    this.gppu = this.gpu.getFirstDead();
+
+    this.gppu.reset(this.game.rnd.integerInRange(-35, 864), 0);
+
+
+    this.gppu.body.velocity.y = (velY + 900);
+
+    this.gppu.checkWorldBounds = true;
+    this.gppu.outOfBoundsKill = true;
+    
+    this.gppu.tint = 0x44aa00;
       },
           
-      scooore: function(){
+      /*scooore: function(){
                  if(this.ppu.tint == 0xf9c22e){
                     score=score+2;
                     this.plus.setText("+2!"); }
@@ -287,7 +284,7 @@
             else if(this.ppu.tint == 0x44aa00){
                     score=score+15;
                     this.plus.setText("+15!"); }
-          },
+          },*/
       
 
   };
