@@ -8,6 +8,8 @@
       
       create: function () {
           
+          this.cursors = this.game.input.keyboard.createCursorKeys();
+          
           controllo = 0;
           
           levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Speed Up!", { font: '150px indieflower', fill: blu});
