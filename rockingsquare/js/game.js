@@ -10,7 +10,7 @@
           
           controllo = 0;
           
-          levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Level Up!", { font: '150px indieflower', fill: blu});
+          levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Speed Up!", { font: '150px indieflower', fill: blu});
           levelup.anchor.setTo(0.5, 0.5);
           levelup.angle = -20;
           levelup.alpha = 0;
