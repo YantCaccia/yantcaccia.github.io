@@ -87,7 +87,7 @@
           if(this.game.device.iOS) {
         
         gyro.startTracking(function(o) {
-             player.body.velocity.x = (o.x)*3500;
+             player.body.velocity.x = (o.x)*3000;
         });
             
         }
