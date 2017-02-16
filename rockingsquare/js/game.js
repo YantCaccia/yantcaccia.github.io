@@ -8,9 +8,6 @@
       
       create: function () {
           
-          this.qqq = this.game.add.sprite(600, 300, 'pu');
-          this.qqq.tint = 0x44aa00;
-          
           this.cursors = this.game.input.keyboard.createCursorKeys();
           
           controllo = 0;
