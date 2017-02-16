@@ -80,10 +80,10 @@
             
         }
           
-          if(this.game.device.iOS) {
+          if(this.game.device.iOS) { //500
         
         gyro.startTracking(function(o) {
-             player.body.velocity.x = (o.x)*500;
+             player.body.velocity.x = (o.x)*3300;
         });
             
         }
