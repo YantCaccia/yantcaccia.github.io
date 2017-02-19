@@ -212,8 +212,8 @@
             
             this.ppu.kill();
             //this.scooore();
-            score=score+2;
-            this.plus.setText("+2!");
+            score=score+5;
+            this.plus.setText("+5!");
             fx.play();
             this.plus.alpha = 1;
             this.tweeen = this.game.add.tween(this.plus).to({alpha: 0}, 300, Phaser.Easing.Linear.None, true, 1000);
