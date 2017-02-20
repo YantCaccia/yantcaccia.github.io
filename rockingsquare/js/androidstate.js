@@ -23,7 +23,7 @@
             window.open('https://play.google.com/store/apps/details?id=com.yantcaccia.project1');
        }
         
-        if(this.game.device.iOS){
+        else if(this.game.device.iOS){
             
             window.open('https://itunes.apple.com/it/app/rocking-square/id1205158930?l=en&mt=8');
        }
