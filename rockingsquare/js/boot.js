@@ -44,6 +44,11 @@
             this.game.state.start('androidstate');
        }
         
+        if(this.game.device.iOS){
+            
+            this.game.state.start('androidstate');
+       }
+        
         else{
         this.game.state.start('preloader');
         }

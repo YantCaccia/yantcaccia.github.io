@@ -8,7 +8,7 @@
           
           this.game.stage.addChild(player);
           
-        this.mainmenu5 = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 770, "Download now \r on Play Store!", { font: '100px indieflower', fill: giallo }); 
+        this.mainmenu5 = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 770, "Download now \r for iOS and Android!", { font: '100px indieflower', fill: giallo }); 
         this.mainmenu5.anchor.setTo(0.5, 0.5);
           
         this.mainmenu6 = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Tap me", { font: '100px indieflower', fill: giallo }); 
@@ -18,7 +18,16 @@
       },
       
     ltp: function(){
-        window.open('https://play.google.com/store/apps/details?id=com.yantcaccia.project1');
+        if(this.game.device.android){
+            
+            window.open('https://play.google.com/store/apps/details?id=com.yantcaccia.project1');
+       }
+        
+        if(this.game.device.iOS){
+            
+            window.open('https://itunes.apple.com/it/app/rocking-square/id1205158930?l=en&mt=8');
+       }
+        
     }
       
       };
