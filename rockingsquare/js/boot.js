@@ -39,7 +39,7 @@
           this.game.scale.refresh(); 
             //}
         
-      if(this.game.device.android||this.game.device.iOS){
+      if(this.game.device.android){
             
             this.game.state.start('androidstate');
        }
