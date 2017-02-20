@@ -39,10 +39,10 @@
           this.game.scale.refresh(); 
             //}
         
-      if(this.game.device.android){
+      /*if(this.game.device.android||this.game.device.iOS){
             
             this.game.state.start('androidstate');
-       }
+       }*/
         
         else{
         this.game.state.start('preloader');
