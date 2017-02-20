@@ -44,9 +44,9 @@
             this.game.state.start('androidstate');
        }*/
         
-        else{
+        //else{
         this.game.state.start('preloader');
-        }
+        //}
     }
   };
 
