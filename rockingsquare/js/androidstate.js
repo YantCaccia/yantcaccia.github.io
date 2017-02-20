@@ -8,7 +8,7 @@
           
           this.game.stage.addChild(player);
           
-        this.mainmenu5 = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 770, "Download now \r for iOS and Android!", { font: '100px indieflower', fill: giallo }); 
+        this.mainmenu5 = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 650, "Download now \rfor iOS \rand Android!", { font: '90px indieflower', fill: giallo }); 
         this.mainmenu5.anchor.setTo(0.5, 0.5);
           
         this.mainmenu6 = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Tap me", { font: '100px indieflower', fill: giallo }); 
