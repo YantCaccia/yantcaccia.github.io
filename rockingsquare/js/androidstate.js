@@ -25,7 +25,8 @@
         
         else if(this.game.device.iOS){
             
-            window.open('https://itunes.apple.com/it/app/rocking-square/id1205158930?l=en&mt=8');
+            //window.open('https://itunes.apple.com/it/app/rocking-square/id1205158930?l=en&mt=8');
+            location.href = "https://itunes.apple.com/it/app/rocking-square/id1205158930?l=en&mt=8";
        }
         
     }
