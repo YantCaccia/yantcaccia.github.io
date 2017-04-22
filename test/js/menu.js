@@ -25,7 +25,7 @@
           if (score>best){this.high.visible = true;}
           else if (score<best){this.high.visible=false;}
           
-          this.asd = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 50, "Your score: " + score, { font: '60px indieflower', fill: "#9d5ae7"});
+          this.asd = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 50, "Your score: " + score, { font: '60px indieflower', fill: giallo});
           this.asd.anchor.setTo(0.5, 0.5);
         
           

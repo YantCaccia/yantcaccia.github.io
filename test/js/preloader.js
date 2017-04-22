@@ -46,7 +46,7 @@
         this.audiooff.events.onInputDown.add(this.mute, this);
         this.audiooff.visible=true;
         
-        this.credits = this.game.add.text(this.game.world.centerX + 415, this.game.world.centerY + 900, "Credits", { font: '35px indieflower', fill: marrone }); //1BBA7D
+        this.credits = this.game.add.text(this.game.world.centerX + 415, this.game.world.centerY + 900, "Credits", { font: '35px indieflower', fill: "#ffffff" }); //1BBA7D
         this.credits.anchor.setTo(0.5, 0.5);
         this.credits.inputEnabled = true;
         this.credits.events.onInputDown.add(this.showcrdts, this);
@@ -56,7 +56,7 @@
         this.tutorial.inputEnabled = true;
         this.tutorial.events.onInputDown.add(this.showtutorial, this);
         
-        this.tutorial1 = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 465, "(do you really need one?)", { font: '25px indieflower', fill: verde });
+        this.tutorial1 = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 465, "  (do you really need one?)  ", { font: '25px indieflower', fill: verde });
         this.tutorial1.anchor.setTo(0.5, 0.5);
         
         start = this.game.add.audio('play');
