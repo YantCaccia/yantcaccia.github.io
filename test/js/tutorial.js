@@ -23,8 +23,10 @@
         this.game.stage.addChild(player);
         this.bloc = this.game.add.sprite(700, 400, 'blocco');
         this.bloc.scale.setTo(0.3,0.223);
+        this.bloc.tint = "0xff5420";
         this.bloc1 = this.game.add.sprite(200, 1170, 'blocco');
         this.bloc1.scale.setTo(0.3,0.223);
+        this.bloc1.tint = "0x2387d8";
         this.coin = this.game.add.sprite(250, 250, 'pu');
         this.tilt2 = this.game.add.text(120, 265, "+5!", { font: '60px indieflower', fill: "#ffffff" });
         this.tilt2.angle=-10;
