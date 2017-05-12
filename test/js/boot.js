@@ -8,7 +8,7 @@
     preload: function () {
       this.load.image('blocco', 'assets/qwe.png');
       this.load.image('pu', 'assets/coin1.png');
-      this.load.image('asd', 'assets/player.png');
+      this.load.image('asd', 'assets/player1.png');
       this.load.image('bck', 'assets/wp.jpeg');
       this.game.load.audio('ten', 'assets/sfx.wav');
       this.game.load.audio('play', 'assets/start1.wav');
