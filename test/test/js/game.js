@@ -8,8 +8,6 @@
 
       create: function () {
 
-        //testissimo = this.game.add.text(100,100,"ciao");
-
           window.plugins.insomnia.keepAwake();
 
           controllo = 0;

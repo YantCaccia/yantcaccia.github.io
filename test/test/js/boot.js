@@ -4,7 +4,7 @@
   function Boot() {}
 
   Boot.prototype = {
-      
+
     preload: function () {
       this.load.image('blocco', 'assets/qwe.png');
       this.load.image('pu', 'assets/coin1.png');
@@ -17,20 +17,20 @@
     },
 
     create: function () {
-        
-        StatusBar.hide();
-        
+
+        //StatusBar.hide();
+
         this.game.stage.backgroundColor = "#4ec44e"; //212121  353535 13293D 4d7cff 2495f2
-        
+
         tri = this.game.make.tileSprite(this.game.world.centerX, 1850, 'bck');
         tri.anchor.setTo(0.5, 0.964);
-        
+
         player = this.game.make.sprite(this.game.world.centerX, 1850, 'asd');
         player.anchor.setTo(0.5, 0.5);
-         
+
         this.game.forceSingleUpdate = true; // permette al custom font di essere letto chiaramente
         this.game.renderer.renderSession.roundPixels = true; // permette al custom font di essere letto chiaramente
-        
+
           this.game.scale.minWidth = 320;
           this.game.scale.minHeight = 480;
           this.game.scale.maxWidth = 1280; //1440
@@ -41,9 +41,9 @@
           this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         //}
         //else {
-          this.game.scale.refresh(); 
+          this.game.scale.refresh();
             //}
-        
+
         this.game.state.start('preloader');
         }
   };
@@ -51,4 +51,3 @@
   window['antonio'] = window['antonio'] || {};
   window['antonio'].Boot = Boot;
 }());
-
