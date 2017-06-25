@@ -7,7 +7,7 @@
 
     create: function () {
 
-      this.testissimo = this.game.add.text(100,100,"cacca");
+      this.testissimo = this.game.add.text(100,100,"casa");
 
         jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
