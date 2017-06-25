@@ -19,10 +19,24 @@
         this.back.anchor.setTo(0.5, 0.5);
         this.back.inputEnabled = true;
         this.back.events.onInputDown.add(this.baack, this);
+          
+        this.author = this.game.add.text(this.game.world.centerX, this.game.world.centerY +750, "About the Developer (tap on me)", { font: '45px indieflower', fill: "#ffffff" });
+        this.author.anchor.setTo(0.5, 0.5);
+        this.author.inputEnabled = true;
+        this.author.events.onInputDown.add(this.link, this);
+        this.author.angle = 2;
+          
+        this.rock = this.game.add.tween(this.author).to( { angle: -2 }, 235, "Linear", true, 0, -1);
+        this.rock.yoyo(true, 0);
       },
       
       baack: function() {
       this.game.state.start('preloader');
+  },
+      
+      link: function() {
+      
+          cordova.InAppBrowser.open('https://yantcaccia.github.io/', '_system', '');
   }
       };
 

@@ -6,7 +6,7 @@
   Tutorial.prototype = {
       create: function () {
           
-          this.game.add.tileSprite(0, 0, 1080, 1920, 'bck');
+        this.game.add.tileSprite(0, 0, 1080, 1920, 'bck');
           
         this.back1 = this.game.add.text(this.game.world.centerX + 380, this.game.world.centerY + 900, "let me play", { font: '35px indieflower', fill: "#ffffff" });
         this.back1.anchor.setTo(0.5, 0.5);

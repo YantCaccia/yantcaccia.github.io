@@ -6,11 +6,7 @@
   Menu.prototype = {
 
       create: function () {
-          
-          this.game.add.tileSprite(0, 0, 1080, 1920, 'bck');
-          
-          this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-          
+        
           var best = localStorage.getItem('bestscore');
           
           this.go = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 750, "Game over!", { font: '160px indieflower', fill: giallo});
@@ -53,11 +49,10 @@
 
     update: function () {
         
-        if (this.jumpButton.isDown)
-          {
-              this.game.state.start('game');
-          }
-
+        if (jumpButton.isDown){
+          
+            this.game.state.start('game');
+    }
 
     },
 

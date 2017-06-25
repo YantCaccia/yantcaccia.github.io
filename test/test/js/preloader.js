@@ -7,9 +7,7 @@
       
     create: function () {
         
-        this.game.add.tileSprite(0, 0, 1080, 1920, 'bck');
-        
-        this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         
         this.game.stage.addChild(player);
         
@@ -69,23 +67,35 @@
              this.game.sound.mute = false;
              start.play();
          } 
-          else if(this.game.sound.mute==false)
+          else if(this.game.sound.mute==false){
               this.game.sound.mute = true;
-          },
+          }
+      },
       
       playdown: function(){
           this.game.state.start('game');
-          start.play();
+          if(this.game.sound.mute==true){start.stop();}
+          else if(this.game.sound.mute==false){start.play();}
           },
       
       showcrdts: function(){
           this.game.state.start('credits');
-          start.play();
+          if(this.game.sound.mute==true){
+             start.stop();
+         } 
+          else if(this.game.sound.mute==false){
+                start.play();
+            }
           },
       
       showtutorial: function(){
           this.game.state.start('tutorial');
-          start.play();
+          if(this.game.sound.mute==true){
+             start.stop();
+         } 
+          else if(this.game.sound.mute==false){
+                start.play();
+            }
           },
 
     update: function () {
@@ -97,7 +107,7 @@
           this.audiooff.setText("Mute Audio");
           }
         
-      if (this.jumpButton.isDown){
+      if (jumpButton.isDown){
           
             this.game.state.start('game');
     }
