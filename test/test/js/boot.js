@@ -9,7 +9,6 @@
       this.load.image('blocco', 'assets/qwe.png');
       this.load.image('pu', 'assets/coin1.png');
       this.load.image('asd', 'assets/player2.png');
-      this.load.image('bck', 'assets/wp.jpeg');
       this.game.load.audio('ten', 'assets/sfx.wav');
       this.game.load.audio('play', 'assets/start1.wav');
       this.game.load.audio('dead', 'assets/dead.wav');
@@ -22,13 +21,10 @@
 
         this.game.stage.backgroundColor = "#4ec44e"; //212121  353535 13293D 4d7cff 2495f2
 
-        tri = this.game.make.tileSprite(this.game.world.centerX, 1850, 'bck');
-        tri.anchor.setTo(0.5, 0.964);
-
         player = this.game.make.sprite(this.game.world.centerX, 1850, 'asd');
         player.anchor.setTo(0.5, 0.5);
 
-        this.game.forceSingleUpdate = true; // permette al custom font di essere letto chiaramente
+        this.game.forceSingleUpdate = true;
         this.game.renderer.renderSession.roundPixels = true; // permette al custom font di essere letto chiaramente
 
           this.game.scale.minWidth = 320;

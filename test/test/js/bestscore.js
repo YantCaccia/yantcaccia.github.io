@@ -19,3 +19,4 @@ var marrone = "#63220b"; //63220b
 var giallo = "#ffb100"; //f9c22e
 var verde = "#499e01"; //44aa00 1fb800
 var bianco = "#ffffff";
+var myColors = ["0xff5420", "0x2387d8", "0x9d5ae7"];

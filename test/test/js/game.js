@@ -8,7 +8,9 @@
 
       create: function () {
 
-          window.plugins.insomnia.keepAwake();
+        this.cursors = this.game.input.keyboard.createCursorKeys();
+
+          //window.plugins.insomnia.keepAwake();
 
           controllo = 0;
 
@@ -34,8 +36,6 @@
 
           this.game.time.desiredFps = 60;
 
-          this.cursors = this.game.input.keyboard.createCursorKeys();
-
           this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
           this.game.world.setBounds(0, 0, 1080, 1920); //limiti mondo
@@ -51,7 +51,6 @@
           velY = 1200;
 
           this.powerup = this.game.time.events.loop(4000, this.pugenerator, this);
-
           this.greencoin = this.game.time.events.loop((Math.floor(Math.random() * (17000 - 10000 + 1)) + 10000), this.teest, this);
           this.pipeGenerator = this.game.time.events.loop(750, this.createBaddie, this);  //determina col primo attributo tra le parentesi ogni quanto cade un blocco
 
@@ -72,6 +71,7 @@
 
           score = -2;
           this.labelScore = this.game.add.text(30, 30,'', { font: "60px indieflower", fill: bianco }); //#F9C22E
+          this.labelScore.visible = false;
           this.pause = this.game.add.text(880, 30,'pause', { font: "50px indieflower", fill: bianco });
           this.pause.inputEnabled = true
           this.pause.events.onInputDown.add(this.pausedown, this);
@@ -117,10 +117,13 @@
     item.body.immovable = true;
 
 
-    var myColors = ["0xff5420", "0x2387d8", "0x9d5ae7"]; //"0x4285F4", "0x34A853", "0xFBBC05", "0xEA4335" 27B9DD //"0x1BBA7D", "0xF15946", "0x2684EF" //"0xdd210d", "0x0a427f", "0x44aa00"
     col = myColors[Math.floor(Math.random() * myColors.length)];
 
     item.tint = col;
+
+    if(score>0){
+      this.labelScore.visible = true;
+    }
 
     },
 
@@ -131,7 +134,9 @@
 
     update: function () {
 
-        if(score>10 && controllo==0){
+
+
+        /*if(score>10 && controllo==0){
 
             this.contenuto();
             controllo = 1;
@@ -161,22 +166,38 @@
             this.contenuto();
             controllo = 4;
 
-        }
+        }*/
+
+        switch(true){
+
+        case (score>10&&controllo==0):     this.contenuto();
+                                           controllo = 1;
+                                           this.powerup.delay = 2000;
+                                           break;
+
+        case (score>40 && controllo==1):   this.pipeGenerator.delay = 400;
+                                           this.contenuto();
+                                           controllo = 2;
+                                           this.powerup.delay = 1400;
+                                           break;
+
+        case(score>75 && controllo==2):   velY = 1400;
+                                          this.contenuto();
+                                          controllo = 3;
+                                          this.powerup.delay = 900;
+                                          break;
+
+        case(score>110 && controllo==3):  this.pipeGenerator.delay = 320;
+                                          this.contenuto();
+                                          controllo = 4;
+                                          break;
+}
 
         this.labelScore.setText(score);
 
-        if (score>0) {
-        this.labelScore.visible = true;
-            }
-
-        else {
-            this.labelScore.visible = false;
-              }
-
         player.body.velocity.x = 0;
 
-
-          if (this.cursors.left.isDown)
+      /*  if (this.cursors.left.isDown)
           {
               player.body.velocity.x = -1600;
           }
@@ -184,7 +205,7 @@
                   else if (this.cursors.right.isDown)
           {
               player.body.velocity.x = 1600;
-          }
+          }*/
 
 
         if(this.game.physics.arcade.collide(this.ob, player)){  //se il player tocca un blocco, il player sparisce
@@ -193,9 +214,9 @@
             gyro.stopTracking();
             player.body.velocity.x = 0;
             this.main.stop();
-            if(this.game.sound.mute==false){
-            this.dead.play();}
-            else if(this.game.sound.mute==true) {this.dead.stop();}            this.game.state.start('menu');
+            if(this.game.sound.mute==false){this.dead.play();}
+            else if(this.game.sound.mute==true) {this.dead.stop();}
+            this.game.state.start('menu');
 
             if (score>bestscore){
 
@@ -229,9 +250,8 @@
             score=score+5;
             this.plus.setText("+5!");
 
-            if(this.game.sound.mute==false){
-         fx.play();}
-          else if(this.game.sound.mute==true) {fx.stop();}
+            if(this.game.sound.mute==false){fx.play();}
+            else if(this.game.sound.mute==true) {fx.stop();}
             this.plus.alpha = 1;
             this.tweeen = this.game.add.tween(this.plus).to({alpha: 0}, 300, Phaser.Easing.Linear.None, true, 1000);
         }
@@ -241,9 +261,8 @@
             this.gppu.kill();
             score=score+15;
             this.plus.setText("+15!");
-            if(this.game.sound.mute==false){
-         fx.play();}
-          else if(this.game.sound.mute==true) {fx.stop();}
+            if(this.game.sound.mute==false){fx.play();}
+            else if(this.game.sound.mute==true) {fx.stop();}
             this.plus.alpha = 1;
             this.tweeen = this.game.add.tween(this.plus).to({alpha: 0}, 300, Phaser.Easing.Linear.None, true, 1000);
         }

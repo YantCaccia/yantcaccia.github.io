@@ -7,32 +7,20 @@
 
     create: function () {
 
-      this.testissimo = this.game.add.text(100,100,"nnnn");
-
-        jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
         this.game.stage.addChild(player);
 
         this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 770, "Rocking", { font: '195px indieflower', fill: giallo }); //F9C22E
         this.mainmenu.anchor.setTo(0.5, 0.5);
         this.mainmenu.angle = -2;
 
-        this.test = this.game.add.tween(this.mainmenu).to( { angle: 2 }, 235, "Linear", true, 0, -1);
-        this.test.yoyo(true, 0);
+        this.test = this.game.add.tween(this.mainmenu).to( { angle: 2 }, 235, "Linear", true, 0, -1, true);
 
 
         this.mainmenu1 = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 580, "Square", { font: '180px indieflower', fill: giallo }); //F9C22E
         this.mainmenu1.anchor.setTo(0.5, 0.5);
         this.mainmenu1.angle = 2;
 
-        this.mainmenu.stroke = '#000000';
-        this.mainmenu.strokeThickness = 8;
-
-        this.mainmenu1.stroke = '#000000';
-        this.mainmenu1.strokeThickness = 8;
-
-        this.test1 = this.game.add.tween(this.mainmenu1).to( { angle: -2 }, 235, "Linear", true, 0, -1);
-        this.test1.yoyo(true, 0);
+        this.test1 = this.game.add.tween(this.mainmenu1).to( { angle: -2 }, 235, "Linear", true, 0, -1, true);
 
 
         this.play = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Let's play!", { font: '100px indieflower', fill: rosso }); //F15946
@@ -40,7 +28,7 @@
         this.play.inputEnabled = true;
         this.play.events.onInputDown.add(this.playdown, this);
 
-        this.audiooff = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 200, "Mute", { font: '100px indieflower', fill: blu }); //2684EF
+        this.audiooff = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 200, "", { font: '100px indieflower', fill: blu }); //2684EF
         this.audiooff.anchor.setTo(0.5, 0.5);
         this.audiooff.inputEnabled = true;
         this.audiooff.events.onInputDown.add(this.mute, this);
@@ -69,7 +57,7 @@
              this.game.sound.mute = false;
              start.play();
          }
-          else if(this.game.sound.mute==false){
+        if(this.game.sound.mute==false){
               this.game.sound.mute = true;
           }
       },
@@ -107,12 +95,7 @@
          }
           else if(this.game.sound.mute==false){
           this.audiooff.setText("Mute Audio");
-          }
-
-      if (jumpButton.isDown){
-
-            this.game.state.start('game');
-    }
+        }
 
   },
 
