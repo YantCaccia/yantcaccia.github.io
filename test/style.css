@@ -43,7 +43,7 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 	padding:100px 50px;
 }
 
-/* = Full Width Blocs 
+/* = Full Width Blocs
 -------------------------------------------------------------- */
 
 .full-width-bloc{
@@ -484,7 +484,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 /* Background colour styles */
 
 .bgc-dark-midnight-blue{
-	background-color:#043464;
+	background-color:#004182;  /* 043464 */
 }
 .bgc-white{
 	background-color:#ffffff;
@@ -508,17 +508,17 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 
 
 
-/* = Mobile adjustments 
+/* = Mobile adjustments
 -------------------------------------------------------------- */
 @media (max-width: 1024px)
 {
     .bloc{
-        padding-left: 20px; 
-        padding-right: 20px;  
+        padding-left: 20px;
+        padding-right: 20px;
     }
     .bloc.full-width-bloc, .bloc-tile-2.full-width-bloc .container, .bloc-tile-3.full-width-bloc .container, .bloc-tile-4.full-width-bloc .container{
-        padding-left: 0; 
-        padding-right: 0;  
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 @media (max-width: 992px) and (min-width: 768px)
@@ -544,8 +544,8 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
         position:relative;
     }
     h1,h2,h3,h4,h5,h6,p,#disqus_thread{
-        padding-left:10px!important; 
-        padding-right:10px!important; 
+        padding-left:10px!important;
+        padding-right:10px!important;
     }
     #hero-bloc h1{
         font-size:40px;
@@ -557,8 +557,8 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
         font-size:25px;
     }
     .bloc{
-        padding-left: 0; 
-        padding-right: 0;  
+        padding-left: 0;
+        padding-right: 0;
         -webkit-background-size: auto 200%;
         -moz-background-size: auto 200%;
         -o-background-size: auto 200%;
@@ -581,7 +581,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	   transform:none;
 	   -webkit-transform:none;
 	   -ms-transform:none;
-    }  
+    }
     .nav > li{
         margin-top: 0;
         border-bottom:1px solid rgba(0,0,0,.1);
@@ -593,7 +593,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
     .nav > li:hover{
         background:rgba(0,0,0,.08);
     }
-    .dropdown .dropdown a .caret{   
+    .dropdown .dropdown a .caret{
         float: none;
         margin: 5px 0 0 10px!important;
         border: 4px solid black;
@@ -601,7 +601,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
         border-right-color: transparent;
         border-left-color: transparent;
     }
-    
+
     #hero-bloc .navbar .nav{
         background:rgba(0,0,0,.8);
     }
@@ -624,14 +624,14 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
     .navbar-brand img{
         max-height: 40px;
         width:auto;
-        margin: -10px 10px 0 0;    
+        margin: -10px 10px 0 0;
     }
     .nav-invert .navbar-header{
         float: none;
         width:100%;
     }
     .nav-invert .navbar-toggle{
-        float:left; 
+        float:left;
     }
     .bloc-group .bloc{
          display:block;
@@ -645,14 +645,14 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
         padding: 40px 0;
     }
     .bloc-sm,.bloc-md{
-        padding-left: 0; 
+        padding-left: 0;
         padding-right: 0;
     }
     .a-block{
         padding:0 10px;
     }
     .btn-dwn{
-       display:none; 
+       display:none;
     }
     .voffset{
         margin-top:5px;
@@ -709,4 +709,3 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	text-align:center;
 }
 }
-
