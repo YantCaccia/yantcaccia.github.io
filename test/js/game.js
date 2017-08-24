@@ -69,6 +69,22 @@
 
         gyro.frequency = 5;
 
+        if(this.game.device.android) {
+
+        gyro.startTracking(function(o) {
+             player.body.velocity.x = -(o.x)*400;
+        });
+
+        }
+
+          if(this.game.device.iOS) {
+
+        gyro.startTracking(function(o) {
+             player.body.velocity.x = (o.x)*500;
+        });
+
+        }
+
           if(this.game.device.WP) {
 
         gyro.startTracking(function(o) {
