@@ -10,12 +10,12 @@ window.addEventListener('load', function () {
   game.state.add('game', ns.Game);
   game.state.add('credits', ns.Credits);
   game.state.add('tutorial', ns.Tutorial);
-  //if(localnick==null){
-    //window.location.href = "login.html";
-  //}
-  //else{
+  if(localnick==null){
+    window.location.href = "login.html";
+  }
+  else{
   game.state.start('boot');
-//}
+}
 }, false);
 
 
