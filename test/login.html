@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link type="text/css" rel="stylesheet" href="style.css" />
+  <style>
+      @font-face{
+          font-family: 'bungee';
+          src: url('assets/font/bungee/bunge.ttf');
+      }
+
+      #preload-font {
+    font-family: 'bungee', sans-serif;
+    text-indent: -9999px;
+    font-size: 0;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form id="contact">
+      <h1 class="rs">Write your nickname and password to access to the leaderboard <br><br>If it's your frist time, choose new ones and check for availability</h1>
+      <p style="color: red; font-size: 10px;" class="nonvisible">Nick is already taken or passowrd is incorrect. Retry!</p>
+      <fieldset>
+        <input id="nick" style="border:none; outline:none" placeholder="Nickname" type="text" tabindex="1">
+      </fieldset>
+      <fieldset>
+        <input id="password" style="border:none; outline:none" placeholder="Password" type="password" tabindex="2" >
+      </fieldset>
+      <fieldset>
+        <button form="" type="submit" id="button">Done!</button>
+      </fieldset>
+    </form>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAOdcjzIFTQJRoinMAhNEnYOqHxKL79wyQ",
+    authDomain: "project1-79776.firebaseapp.com",
+    databaseURL: "https://project1-79776.firebaseio.com",
+    projectId: "project1-79776",
+    storageBucket: "project1-79776.appspot.com",
+    messagingSenderId: "29652105999"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+var button = document.getElementById('button');
+button.addEventListener('click', logincheck);
+function logincheck(){
+var nick = document.getElementById('nick').value;
+var pswinserita = document.getElementById('password').value;
+var ref = firebase.database().ref("/leaderboard");
+
+
+ref.once("value")
+  .then(function(snapshot) {
+    var hasName = snapshot.child(nick).exists();
+    var pswdatabase = snapshot.child(nick + "/password").val();
+    //se il nick esiste già
+    if(hasName){
+      //se la password inserita è uguale a quella conservata nel database
+      if(pswinserita==pswdatabase){
+      console.log('le password combaciano');
+      localStorage.setItem('nickstorage', nick);
+      window.location.href = "index.html";
+    }
+    //se la password inserita NON è uguale a quella conservata nel database
+    else{
+      document.getElementsByClassName('nonvisible')[0].setAttribute('class', 'visible');
+      console.log('le password non combaciano');
+    }
+        }
+    //se il nick non esiste
+    else{
+      console.log('non esiste');
+      firebase.database().ref('/leaderboard/' + nick).set({
+        password: pswinserita
+  });
+  localStorage.setItem('nickstorage', nick);
+  window.location.href = "index.html";
+    } // true
+  });
+}
+</script>
+<script src="js/bestscore.js"></script>
+</body>
+</html>
