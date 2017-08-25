@@ -3,6 +3,7 @@ window.addEventListener('load', function () {
 
   var ns = window['antonio'];
   var game = new Phaser.Game(1080, 1920, Phaser.CANVAS, 'antonio-game');
+  game.enableDebug = false;
   game.state.add('boot', ns.Boot);
   game.state.add('androidstate', ns.Androidstate);
   game.state.add('preloader', ns.Preloader);

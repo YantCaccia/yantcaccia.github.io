@@ -1,18 +1,11 @@
-//var localnick;
 var localnick = localStorage.getItem('nickstorage');
-var user_id;
-var col;
 var bestscore = 0;
 
-
 var ref = firebase.database().ref("/leaderboard");
-
-
 ref.once("value")
   .then(function(snapshot) {
-    var hasScore = snapshot.child(localnick + "/mscore").exists();
     //se il bestscore per quel nick esiste già nel databse lo imposta anche localmente
-    if(hasScore){
+    if(snapshot.child(localnick + "/mscore").exists()){
           bestscore = localStorage.setItem('bestscore', snapshot.child(localnick).val().mscore);
         }
     else{
@@ -20,18 +13,7 @@ ref.once("value")
     }
   });
 
-
-
-
-//bestscore = localStorage.getItem('bestscore');
-var score;
-var player;
-var velY;
-var start;
-var fx;
-var levelup;
-var lufo;
-var background;
+var score, player, velY, start, fx, levelup, lufo;
 var controllo = 0;
 var rosso = "#ff5420"; //dd210d
 var blu = "#2387d8"; //0a427f

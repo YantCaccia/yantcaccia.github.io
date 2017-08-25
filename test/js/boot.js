@@ -6,7 +6,6 @@
   Boot.prototype = {
 
     preload: function () {
-      this.load.image('wp', 'assets/gr.jpg');
       this.load.image('blocco', 'assets/qwe.png');
       this.load.image('pu', 'assets/coin1.png');
       this.load.image('asd', 'assets/player.png');
@@ -18,19 +17,11 @@
 
     create: function () {
 
-      var canvas = document.querySelector('canvas');
-      var style = canvas.getAttribute('style');
-      //var style = canvas.style.cssText;
-      console.log(style);
+      //Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
+      //PIXI.scaleModes.DEFAULT = PIXI.scaleModes.NEAREST;
+    //  this.game.stage.smoothed = false;
 
-      document.getElementById('div').setAttribute('style', 'background-color:#ffffff; display:block;');
-
-        /*background = this.game.make.sprite(this.game.world.centerX, this.game.world.centerY, 'wp');
-        background.anchor.setTo(0.5, 0.5);
-        this.game.stage.addChild(background);*/
-
-
-        this.game.stage.backgroundColor = '#4ec44e';
+        this.game.stage.backgroundColor = '#48C647'; //48C647
 
         //this.game.stage.backgroundColor = '#2495F2'; //212121  353535 13293D 4d7cff
 
@@ -47,12 +38,12 @@
           this.game.scale.maxHeight = 2560;//2560
           this.game.scale.pageAlignHorizontally = true;
           this.game.scale.pageAlignVertically = true;
-        //if(this.game.device.desktop){
+        //if(this.game.device.android){
           this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         //}
         //else {
           this.game.scale.refresh();
-            //}
+          //  }
 
       /*if(this.game.device.android||this.game.device.iOS){
 
@@ -63,7 +54,8 @@
         this.game.state.start('preloader');
         //}
     }
-  };
+
+    };
 
   window['antonio'] = window['antonio'] || {};
   window['antonio'].Boot = Boot;

@@ -10,12 +10,12 @@
   text-rendering: optimizeLegibility;
 }
 
-body {
+body#login {
   font-family: "bungee", Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-size: 12px;
   line-height: 30px;
-  color: #FFB200;
+  color: #333333;
   background: #48C647;
 }
 
@@ -100,4 +100,32 @@ fieldset {
 
 .visible{
   display: block;
+}
+
+#skip{
+  color: #333333;
+  line-height: 1.25;
+  background-color: #48C647;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  bottom: 0em;
+  text-decoration: none;
+}
+
+.rock{
+  color: #ffb100;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: 40px;
+  font-size: 70px;
+}
+
+canvas {
+    image-rendering: optimizeSpeed;             /* Older versions of FF          */
+    image-rendering: -moz-crisp-edges;          /* FF 6.0+                       */
+    image-rendering: -webkit-optimize-contrast; /* Safari                        */
+    image-rendering: -o-crisp-edges;            /* OS X & Windows Opera (12.02+) */
+    image-rendering: pixelated;                 /* Awesome future-browsers       */
+    -ms-interpolation-mode: nearest-neighbor;   /* IE                            */
 }

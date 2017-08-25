@@ -20,8 +20,8 @@
 
           this.high = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 400, "New high score!", { font: '100px indieflower', fill: giallo});
           this.high.anchor.setTo(0.5, 0.5);
-          if (score>best){this.high.visible = true;}
-          else if (score<best){this.high.visible=false;}
+          if (score>=-best){this.high.visible=true;}
+          else{this.high.visible=false;}
 
           this.asd = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 50, "Your score: " + score, { font: '60px indieflower', fill: blu });
           this.asd.anchor.setTo(0.5, 0.5);
@@ -69,7 +69,12 @@
     },
 
     onDown2: function () {
-      window.location.href = "./leaderboard/leaderboard.html";
+      if(localnick=="@"){
+          window.location.href = 'login.html';
+            }
+      else{
+          window.location.href = 'leaderboard/leaderboard.html';
+            }
   }
   };
 

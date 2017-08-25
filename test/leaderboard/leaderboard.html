@@ -8,9 +8,6 @@
 
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="./table.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
-
-	<script src="./js/blocs.min.js"></script>
   <title>Leaderboard</title>
 
   <style>
@@ -61,7 +58,7 @@
 //document.getElementById('back').addEventListener('click', function(){window.location.href = "../index.html"}, );
 var a = 0;
 firebase.database().ref("/leaderboard").orderByChild("mscore").on("child_added", function(snapshot){
-  //console.log(snapshot.key + snapshot.val().score);
+  console.log(snapshot.key + snapshot.val().mscore);
   asd = snapshot.key;
   dsa = -(snapshot.val().mscore);
   a++;

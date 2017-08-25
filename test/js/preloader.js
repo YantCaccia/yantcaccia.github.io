@@ -13,18 +13,10 @@
 
         this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 770, "Rocking", { font: '195px indieflower', fill: giallo }); //F9C22E
         this.mainmenu.anchor.setTo(0.5, 0.5);
-        this.mainmenu.angle = -2;
-
-        this.test = this.game.add.tween(this.mainmenu).to( { angle: 2 }, 235, "Linear", true, 0, -1);
-        this.test.yoyo(true, 0);
 
 
         this.mainmenu1 = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 580, "Square", { font: '180px indieflower', fill: giallo }); //F9C22E
         this.mainmenu1.anchor.setTo(0.5, 0.5);
-        this.mainmenu1.angle = 2;
-
-        this.test1 = this.game.add.tween(this.mainmenu1).to( { angle: -2 }, 235, "Linear", true, 0, -1);
-        this.test1.yoyo(true, 0);
 
 
         this.play = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Let's play!", { font: '100px indieflower', fill: rosso }); //F15946
@@ -50,6 +42,13 @@
 
         this.tutorial1 = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 465, "(do you really need one?)", { font: '25px indieflower', fill: verde });
         this.tutorial1.anchor.setTo(0.5, 0.5);
+
+        this.lead = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 600, "Leaderboard", { font: '85px indieflower', fill: rosso }); //1BBA7D
+        this.lead.anchor.setTo(0.5, 0.5);
+        this.lead.inputEnabled = true;
+        this.lead.events.onInputDown.add(this.showleaderboard, this);
+
+
 
         start = this.game.add.audio('play');
 
@@ -78,6 +77,15 @@
       showtutorial: function(){
           this.game.state.start('tutorial');
           start.play();
+          },
+
+      showleaderboard: function(){
+        if(localnick=="@"){
+            window.location.href = 'login.html';
+              }
+        else{
+            window.location.href = 'leaderboard/leaderboard.html';
+              }
           },
 
     update: function () {

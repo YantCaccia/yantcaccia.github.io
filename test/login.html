@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" name="viewport" content="initial-scale=0.3, maximum-scale=1.0, user-scalable=0" />
   <title>Login</title>
   <link type="text/css" rel="stylesheet" href="style.css" />
   <style>
@@ -18,13 +18,16 @@
   </style>
 </head>
 
-<body>
+<body id="login">
   <div class="container">
-    <form id="contact">
+
+    <form id="contact" style="margin: 0px">
+      <h1 class="rock" style="margin-top:100px">Rocking</h1>
+      <h1 class="rock" style="margin-bottom:50px">Square</h1>
       <h1 class="rs">Write your nickname and password to access to the leaderboard <br><br>If it's your frist time, choose new ones and check for availability</h1>
       <p style="color: red; font-size: 10px;" class="nonvisible">Nick is already taken or passowrd is incorrect. Retry!</p>
       <fieldset>
-        <input id="nick" style="border:none; outline:none" placeholder="Nickname" type="text" tabindex="1">
+        <input id="nick" style="border:none; outline:none;" placeholder="Nickname" type="text" tabindex="1">
       </fieldset>
       <fieldset>
         <input id="password" style="border:none; outline:none" placeholder="Password" type="password" tabindex="2" >
@@ -32,6 +35,7 @@
       <fieldset>
         <button form="" type="submit" id="button">Done!</button>
       </fieldset>
+      <a id="skip">Skip</a>
     </form>
   </div>
 
@@ -49,10 +53,12 @@
   firebase.initializeApp(config);
 </script>
 <script>
+var skip = document.getElementById('skip');
+skip.addEventListener('click', skipfun);
 var button = document.getElementById('button');
 button.addEventListener('click', logincheck);
 function logincheck(){
-var nick = document.getElementById('nick').value;
+var nick = document.getElementById('nick').value.toLowerCase();
 var pswinserita = document.getElementById('password').value;
 var ref = firebase.database().ref("/leaderboard");
 
@@ -65,26 +71,29 @@ ref.once("value")
     if(hasName){
       //se la password inserita è uguale a quella conservata nel database
       if(pswinserita==pswdatabase){
-      console.log('le password combaciano');
       localStorage.setItem('nickstorage', nick);
       window.location.href = "index.html";
     }
     //se la password inserita NON è uguale a quella conservata nel database
     else{
       document.getElementsByClassName('nonvisible')[0].setAttribute('class', 'visible');
-      console.log('le password non combaciano');
     }
         }
     //se il nick non esiste
     else{
-      console.log('non esiste');
+      bestscore = localStorage.getItem('bestscore');
       firebase.database().ref('/leaderboard/' + nick).set({
-        password: pswinserita
+        password: pswinserita,
+        mscore: bestscore
   });
   localStorage.setItem('nickstorage', nick);
   window.location.href = "index.html";
     } // true
   });
+}
+function skipfun(){
+  localStorage.setItem('nickstorage', '@');
+  window.location.href = "../index.html";
 }
 </script>
 <script src="js/bestscore.js"></script>

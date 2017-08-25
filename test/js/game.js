@@ -12,12 +12,12 @@
 
           controllo = 0;
 
-          levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Speed Up!", { font: '150px indieflower', fill: blu});
+          levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Speed Up!", { font: '150px indieflower', fill: bianco});
           levelup.anchor.setTo(0.5, 0.5);
           levelup.angle = -20;
           levelup.alpha = 0;
 
-          this.plus = this.game.add.text(90, 155, "", { font: '75px indieflower', fill: blu});
+          this.plus = this.game.add.text(90, 155, "", { font: '75px indieflower', fill: bianco});
           this.plus.angle = -10
           this.plus.anchor.setTo(0.5, 0.5);
           this.plus.alpha = 1;
@@ -36,8 +36,8 @@
 
           this.game.world.setBounds(0, 0, 1080, 1920);
 
-          this.rightwall = this.game.add.sprite(1079, 1900, 'asd');
-          this.leftwall = this.game.add.sprite(-139, 1900, 'asd');
+          this.rightwall = this.game.add.sprite(1079, 1900, 'pu');
+          this.leftwall = this.game.add.sprite(-69, 1900, 'pu');
           this.game.physics.enable([player, this.rightwall, this.leftwall], Phaser.Physics.ARCADE);
           player.body.collideWorldBounds=true;
           this.rightwall.body.immovable = true;
@@ -57,8 +57,8 @@
           this.gpu = this.game.add.physicsGroup();
 
           this.ob.createMultiple(5, 'blocco', 0, false);
-          this.pu.createMultiple(6, 'pu', 0, false);
-          this.gpu.createMultiple(6, 'pu', 0, false);
+          this.pu.createMultiple(2, 'pu', 0, false);
+          this.gpu.createMultiple(1, 'pu', 0, false);
 
 
           score = -2;
@@ -114,11 +114,7 @@
 
     item.body.immovable = true;
 
-    this.labelScore.tint = 0xffffff;
-
-    col = myColors[Math.floor(Math.random() * myColors.length)];
-
-    item.tint = col;
+    item.tint = myColors[Math.floor(Math.random() * myColors.length)];;
 
     },
 
@@ -179,7 +175,7 @@
               player.body.velocity.x = -1600;
           }
 
-                  else if (this.cursors.right.isDown)
+        else if (this.cursors.right.isDown)
           {
               player.body.velocity.x = 1600;
           }
@@ -193,32 +189,18 @@
             this.main.stop();
             this.dead.play();
             this.game.state.start('menu');
-            var bestscore = localStorage.getItem('bestscore');
-            var menobest = -(bestscore);
-
-            if (score>menobest){
-
+            bestscore = localStorage.getItem('bestscore');
+            if (score>-bestscore){
                 localStorage.setItem('bestscore', -score);
-                //bestscore = score;
-
-
-
                 ref.once("value")
                   .then(function(snapshot) {
-                    firebase.database().ref('/leaderboard/' + localnick).set({
-                      mscore: -score
-                });
+                    if(localnick=="@"){}
+                    else{
+                    firebase.database().ref('/leaderboard/' + localnick + "/mscore").set(
+                      Math.floor((-score))
+                );}
                   });
-
-
-
-
-
-
-            }
-
-
-          }
+                    }}
 
 
         if(this.game.physics.arcade.collide(player, this.rightwall)){
@@ -233,7 +215,7 @@
         if(this.game.physics.arcade.collide(this.leftwall, player)){
 
 
-                player.body.x = 940;
+                player.body.x = 939;
 
           }
 
