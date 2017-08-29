@@ -17,33 +17,29 @@
 
     create: function () {
 
-      //Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
-      //PIXI.scaleModes.DEFAULT = PIXI.scaleModes.NEAREST;
-    //  this.game.stage.smoothed = false;
+        StatusBar.hide();
 
         this.game.stage.backgroundColor = '#48C647'; //48C647
 
-        //this.game.stage.backgroundColor = '#2495F2'; //212121  353535 13293D 4d7cff
-
         player = this.game.make.sprite(this.game.world.centerX, 1850, 'asd');
         player.anchor.setTo(0.5, 0.5);
-        //player.scale.setTo(0.28, 0.28);
 
         this.game.forceSingleUpdate = true; // permette al custom font di essere letto chiaramente
         this.game.renderer.renderSession.roundPixels = true; // permette al custom font di essere letto chiaramente
 
           this.game.scale.minWidth = 320;
           this.game.scale.minHeight = 480;
-          this.game.scale.maxWidth = 1280; //1440
-          this.game.scale.maxHeight = 2560;//2560
+          this.game.scale.maxWidth = 2160; //1280
+          this.game.scale.maxHeight = 3840; //2560
           this.game.scale.pageAlignHorizontally = true;
           this.game.scale.pageAlignVertically = true;
-        //if(this.game.device.android){
+        if(this.game.device.android){
           this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        //}
-        //else {
           this.game.scale.refresh();
-          //  }
+        }
+        else {
+          this.game.scale.refresh();
+          }
 
       /*if(this.game.device.android||this.game.device.iOS){
 

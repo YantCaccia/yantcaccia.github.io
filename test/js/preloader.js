@@ -7,8 +7,6 @@
 
     create: function () {
 
-        this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
         this.game.stage.addChild(player);
 
         this.mainmenu = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 770, "Rocking", { font: '195px indieflower', fill: giallo }); //F9C22E
@@ -48,8 +46,6 @@
         this.lead.inputEnabled = true;
         this.lead.events.onInputDown.add(this.showleaderboard, this);
 
-
-
         start = this.game.add.audio('play');
 
     },
@@ -66,17 +62,28 @@
 
       playdown: function(){
           this.game.state.start('game');
-          start.play();
+          if(this.game.sound.mute==true){start.stop();}
+          else if(this.game.sound.mute==false){start.play();}
           },
 
       showcrdts: function(){
           this.game.state.start('credits');
-          start.play();
+          if(this.game.sound.mute==true){
+             start.stop();
+         }
+          else if(this.game.sound.mute==false){
+                start.play();
+            }
           },
 
       showtutorial: function(){
           this.game.state.start('tutorial');
-          start.play();
+          if(this.game.sound.mute==true){
+                       start.stop();
+                   }
+          else if(this.game.sound.mute==false){
+                          start.play();
+                      }
           },
 
       showleaderboard: function(){
@@ -96,11 +103,6 @@
           else if(this.game.sound.mute==false){
           this.audiooff.setText("Mute Audio");
           }
-
-      if (this.jumpButton.isDown){
-
-            this.game.state.start('game');
-    }
 
   },
 

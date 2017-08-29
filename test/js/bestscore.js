@@ -1,5 +1,6 @@
 var localnick = localStorage.getItem('nickstorage');
 var bestscore = 0;
+localStorage.setItem('bestscore', bestscore);
 
 var ref = firebase.database().ref("/leaderboard");
 ref.once("value")

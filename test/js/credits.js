@@ -34,8 +34,7 @@
   },
 
       link: function() {
-
-          window.open('https://yantcaccia.github.io/');
+        cordova.InAppBrowser.open('https://yantcaccia.github.io/', '_system', '');
   }
 
       };

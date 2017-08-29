@@ -7,8 +7,6 @@
 
       create: function () {
 
-          this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
           var best = localStorage.getItem('bestscore');
 
           this.go = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 750, "Game over!", { font: '160px indieflower', fill: giallo});
@@ -50,13 +48,7 @@
 
     update: function () {
 
-        if (this.jumpButton.isDown)
-          {
-              this.game.state.start('game');
-          }
-
-
-    },
+      },
 
     onDown: function () {
         this.game.state.start('game');

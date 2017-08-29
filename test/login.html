@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" name="viewport" content="initial-scale=0.3, maximum-scale=1.0, user-scalable=0" />
+  <meta charset="utf-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=0, user-scalable=0">
   <title>Login</title>
   <link type="text/css" rel="stylesheet" href="style.css" />
   <style>
@@ -19,8 +22,14 @@
 </head>
 
 <body id="login">
-  <div class="container">
+  <script>
+        var contentWidth = document.body.scrollWidth,
+        windowWidth = window.innerWidth,
+        newScale = windowWidth / contentWidth;
+        document.body.style.zoom = newScale;
+  </script>
 
+  <div class="container">
     <form id="contact" style="margin: 0px">
       <h1 class="rock" style="margin-top:100px">Rocking</h1>
       <h1 class="rock" style="margin-bottom:50px">Square</h1>
@@ -88,12 +97,12 @@ ref.once("value")
   });
   localStorage.setItem('nickstorage', nick);
   window.location.href = "index.html";
-    } // true
+    }
   });
 }
 function skipfun(){
   localStorage.setItem('nickstorage', '@');
-  window.location.href = "../index.html";
+  window.location.href = "index.html";
 }
 </script>
 <script src="js/bestscore.js"></script>

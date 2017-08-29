@@ -8,7 +8,7 @@
 
       create: function () {
 
-          this.cursors = this.game.input.keyboard.createCursorKeys();
+          window.plugins.insomnia.keepAwake();
 
           controllo = 0;
 
@@ -25,7 +25,9 @@
           fx = this.game.add.audio('ten');
           this.dead = this.game.add.audio('dead');
           this.main = this.game.add.audio('main');
-          this.main.play();
+          if(this.game.sound.mute==false){
+          this.main.play();}
+          else if(this.game.sound.mute==true) {this.main.stop();}
           this.main.volume = 0.4;
 
           this.input.onDown.add(this.resume, this);
@@ -47,22 +49,21 @@
           velY = 1200;
 
           this.powerup = this.game.time.events.loop(4000, this.pugenerator, this);
-
           this.greencoin = this.game.time.events.loop((Math.floor(Math.random() * (17000 - 10000 + 1)) + 10000), this.teest, this);
-
           this.pipeGenerator = this.game.time.events.loop(750, this.createBaddie, this);
 
           this.ob = this.game.add.physicsGroup();
           this.pu = this.game.add.physicsGroup();
           this.gpu = this.game.add.physicsGroup();
 
-          this.ob.createMultiple(5, 'blocco', 0, false);
+          this.ob.createMultiple(6, 'blocco', 0, false);
           this.pu.createMultiple(2, 'pu', 0, false);
           this.gpu.createMultiple(1, 'pu', 0, false);
 
 
           score = -2;
           this.labelScore = this.game.add.text(30, 30,'', { font: "60px indieflower", fill: bianco });
+          this.labelScore.visible = false;
           this.pause = this.game.add.text(880, 30,'pause', { font: "50px indieflower", fill: bianco });
           this.pause.inputEnabled = true
           this.pause.events.onInputDown.add(this.pausedown, this);
@@ -81,14 +82,6 @@
 
         gyro.startTracking(function(o) {
              player.body.velocity.x = (o.x)*500;
-        });
-
-        }
-
-          if(this.game.device.WP) {
-
-        gyro.startTracking(function(o) {
-             player.body.velocity.x = (o.x)*200;
         });
 
         }
@@ -115,6 +108,10 @@
     item.body.immovable = true;
 
     item.tint = myColors[Math.floor(Math.random() * myColors.length)];;
+
+    if(score>0){
+  this.labelScore.visible = true;
+    }
 
     },
 
@@ -160,26 +157,6 @@
 
         this.labelScore.setText(score);
 
-        if (score>0) {
-        this.labelScore.visible = true;
-            }
-
-        else {
-            this.labelScore.visible = false;
-              }
-
-        player.body.velocity.x = 0;
-
-        if (this.cursors.left.isDown)
-          {
-              player.body.velocity.x = -1600;
-          }
-
-        else if (this.cursors.right.isDown)
-          {
-              player.body.velocity.x = 1600;
-          }
-
 
         if(this.game.physics.arcade.collide(this.ob, player)){
 
@@ -187,7 +164,8 @@
             gyro.stopTracking();
             player.body.velocity.x = 0;
             this.main.stop();
-            this.dead.play();
+            if(this.game.sound.mute==false){this.dead.play();}
+            else if(this.game.sound.mute==true) {this.dead.stop();}
             this.game.state.start('menu');
             bestscore = localStorage.getItem('bestscore');
             if (score>-bestscore){
@@ -200,7 +178,7 @@
                       Math.floor((-score))
                 );}
                   });
-                    }}
+                }}
 
 
         if(this.game.physics.arcade.collide(player, this.rightwall)){
@@ -225,7 +203,8 @@
             //this.scooore();
             score=score+5;
             this.plus.setText("+5!");
-            fx.play();
+            if(this.game.sound.mute==false){fx.play();}
+            else if(this.game.sound.mute==true) {fx.stop();}
             this.plus.alpha = 1;
             this.tweeen = this.game.add.tween(this.plus).to({alpha: 0}, 300, Phaser.Easing.Linear.None, true, 1000);
         }
@@ -233,10 +212,10 @@
         if(this.game.physics.arcade.collide(this.gpu, player)){
 
             this.gppu.kill();
-            //this.scooore();
             score=score+15;
             this.plus.setText("+15!");
-            fx.play();
+            if(this.game.sound.mute==false){fx.play();}
+            else if(this.game.sound.mute==true) {fx.stop();}
             this.plus.alpha = 1;
             this.tweeen = this.game.add.tween(this.plus).to({alpha: 0}, 300, Phaser.Easing.Linear.None, true, 1000);
         }
@@ -288,16 +267,6 @@
 
     this.gppu.tint = 0x44aa00;
       },
-
-      /*scooore: function(){
-                 if(this.ppu.tint == 0xf9c22e){
-                    score=score+2;
-                    this.plus.setText("+2!"); }
-
-            else if(this.ppu.tint == 0x44aa00){
-                    score=score+15;
-                    this.plus.setText("+15!"); }
-          },*/
 
 
   };
