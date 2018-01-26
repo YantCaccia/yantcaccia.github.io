@@ -2,7 +2,7 @@
     
     $.ajax({
           type: 'POST',
-          url: 'http://192.168.1.9:8080/jsonrpc?awxi',
+          url: 'https://192.168.1.9:8080/jsonrpc?awxi',
           data: '{"jsonrpc": "2.0", "method": "PVR.GetChannels", "params": {"channelgroupid": "alltv" }, "id": 1}',
           success: function(result, textStatus, XMLHttpRequest) {canali = result.result.channels; console.log(canali); },
           contentType: 'application/json'
