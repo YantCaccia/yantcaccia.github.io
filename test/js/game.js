@@ -8,8 +8,6 @@
 
       create: function () {
 
-          window.plugins.insomnia.keepAwake();
-
           controllo = 0;
 
           levelup = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "Speed Up!", { font: '150px indieflower', fill: bianco});
@@ -166,10 +164,9 @@
             this.main.stop();
             if(this.game.sound.mute==false){this.dead.play();}
             else if(this.game.sound.mute==true) {this.dead.stop();}
-            this.game.state.start('menu');
-            bestscore = localStorage.getItem('bestscore');
-            if (score>-bestscore){
-                localStorage.setItem('bestscore', -score);
+            bestscore = NativeStorage.getItem('bestscore');
+            if (bestscore==null||score>-bestscore){
+                NativeStorage.setItem('bestscore', -score);
                 ref.once("value")
                   .then(function(snapshot) {
                     if(localnick=="@"){}
@@ -178,7 +175,9 @@
                       Math.floor((-score))
                 );}
                   });
-                }}
+                }
+            this.game.state.start('menu');
+              }
 
 
         if(this.game.physics.arcade.collide(player, this.rightwall)){

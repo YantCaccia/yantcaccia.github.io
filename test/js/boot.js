@@ -17,7 +17,25 @@
 
     create: function () {
 
+        //problem here: id will always be null cause NativeStorage.setItem is never called before. Find solution ASAP!
+
+        /*id = NativeStorage.getItem('id');
+
+        if(id==null){
+          window.location.href = "login.html";
+        }
+        else if(id=='@'){ }
+        else if(!id==null&&!id=='@'){
+          var lid = localStorage.getItem('nickstorage');
+          NativeStorage.setItem('id', lid);
+        }*/
+
+        var jhg = NativeStorage.getItem('nickstorage', function(){}, function(){});
+        console.log(jhg);
+
+        AndroidFullScreen.immersiveMode();
         StatusBar.hide();
+        window.plugins.insomnia.keepAwake();
 
         this.game.stage.backgroundColor = '#48C647'; //48C647
 
@@ -37,8 +55,8 @@
           this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
           this.game.scale.refresh();
         }
-        else {
-          this.game.scale.refresh();
+        else if(this.game.device.iOS) {
+          this.game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
           }
 
       /*if(this.game.device.android||this.game.device.iOS){

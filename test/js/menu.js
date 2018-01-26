@@ -7,7 +7,7 @@
 
       create: function () {
 
-          var best = localStorage.getItem('bestscore');
+          var best = NativeStorage.getItem('bestscore');
 
           this.go = this.game.add.text(this.game.world.centerX, this.game.world.centerY - 750, "Game over!", { font: '160px indieflower', fill: giallo});
           this.go.anchor.setTo(0.5, 0.5);

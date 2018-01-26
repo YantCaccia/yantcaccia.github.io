@@ -1,20 +1,11 @@
-var localnick = localStorage.getItem('nickstorage');
-var bestscore = 0;
-localStorage.setItem('bestscore', bestscore);
+//var localnick = localStorage.getItem('nickstorage');
+//localStorage.setItem('bestscore', bestscore);
 
-var ref = firebase.database().ref("/leaderboard");
+/*var ref = firebase.database().ref("/leaderboard");
 ref.once("value")
-  .then(function(snapshot) {
-    //se il bestscore per quel nick esiste già nel databse lo imposta anche localmente
-    if(snapshot.child(localnick + "/mscore").exists()){
-          bestscore = localStorage.setItem('bestscore', snapshot.child(localnick).val().mscore);
-        }
-    else{
-      bestscore = localStorage.getItem('bestscore');
-    }
-  });
+  .then(function(snapshot) {});*/
 
-var score, player, velY, start, fx, levelup, lufo;
+var score, player, velY, start, fx, levelup, lufo, bestscore, id;
 var controllo = 0;
 var rosso = "#ff5420"; //dd210d
 var blu = "#2387d8"; //0a427f
