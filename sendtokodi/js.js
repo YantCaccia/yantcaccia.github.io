@@ -9,7 +9,7 @@
          $.ajax({
           type: 'POST',
           crossDomain: true,
-          url: 'http://192.168.1.6:8080/jsonrpc?awxi',
+          url: 'https://192.168.1.6:8080/jsonrpc?awxi',
           data: json, //'{"jsonrpc": "2.0", "method": "Player.Open", "params": {"item":{"channelid":1865} }, "id": 1}'
           success: function(result, textStatus, XMLHttpRequest) {console.log(result); },
           contentType: 'application/json'
@@ -21,3 +21,7 @@ document.getElementById("su").addEventListener('click', sendstream, );
 
 
 }
+    
+    
+    
+    //jnsdjskdbnsadnSakjdbnsjkdsdjksanDLK
