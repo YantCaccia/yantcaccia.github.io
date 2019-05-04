@@ -11,9 +11,8 @@ body{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+a,button{transition: all .3s ease-in-out;outline: none!important;} /* Prevent ugly blue glow on chrome and safari */
 a:hover{text-decoration: none; cursor:pointer;}
-
-a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safari */
 
 #page-loading-blocs-notifaction{position: fixed;top: 0;bottom: 0;width: 100%;z-index:100000;background:#FFFFFF url("img/pageload-spinner.gif") no-repeat center center;}
 
@@ -43,7 +42,7 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 	padding:100px 50px;
 }
 
-/* = Full Width Blocs
+/* = Full Width Blocs 
 -------------------------------------------------------------- */
 
 .full-width-bloc{
@@ -155,16 +154,16 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 /* Bloc text custom styling */
 
 #bloc-0 h1{
-	line-height: 100px;
 	font-weight: 400;
-	font-family: 'Oleo Script';
+	font-family: "Oleo Script";
 	font-size: 100px;
+	line-height: 100px;
 }
 #bloc-0 h5{
 	font-family: Lato;
 	font-weight: 300;
 	font-size: 35px;
-	line-height: 38px;
+	line-height: 60px;
 }
 #bloc-2 h2{
 	font-family: Lato;
@@ -174,6 +173,15 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 	font-family: Lato;
 	font-weight: 300;
 	font-size: 27px;
+}
+#stk h2{
+	font-family: Pacifico;
+}
+#stk p{
+	font-family: Lato;
+	font-weight: 300;
+	font-size: 27px;
+	line-height: 37px;
 }
 
 /* = NavBar
@@ -185,18 +193,19 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 }
 .navbar-brand{
 	height:auto;
-	padding:15px 15px;
+	padding:3px 15px;
 	font-size:25px;
 	font-weight:normal;
 	font-weight:600;
+	line-height:44px;
 }
 .navbar-brand img{
 	max-height: 200px;
 	margin: 0 5px 0 0;
 	display:inline;
 }
-.navbar-brand{
-	padding: 15px 15px;
+.nav-center .navbar-brand img{
+	margin:0;
 }
 .navbar .nav{
 	padding-top: 2px;
@@ -233,6 +242,8 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 }
 .nav-invert .navbar-header, .nav-invert .navbar-brand{
 	float:right;
+	position:relative;
+	z-index:2;
 }
 @media (min-width: 768px){
 	.site-navigation{
@@ -246,7 +257,7 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 		color:#484848;
 	}
 	.nav-invert .site-navigation{
-		left:20px;
+		left:0;
 		right:0;
 	}
 	.nav-center{
@@ -262,7 +273,13 @@ a,button{outline: none!important;} /* Prevent ugly blue glow on chrome and safar
 	.nav-center .site-navigation{
 		position:relative;
 		width:100%;
+		right:0;
+		margin-right:0px;
 		margin-top:20px;
+	}
+.nav-center.mini-nav .navbar-toggle{
+	float:none;
+	margin: 10px auto 0;
 	}
 }
 .nav > li > .dropdown a{
@@ -341,11 +358,6 @@ button{
 	outline: none!important;
 }
 
-.btn .caret{
-	margin:0 0 0 5px}.dropdown a .caret{
-	margin:0 0 0 5px}.btn-dropdown .dropdown-menu .dropdown{
-	padding: 3px 20px;
-}
 
 /* = Icons
 -------------------------------------------------------------- */
@@ -371,11 +383,6 @@ button{
 
 
 
-/* iFrame */
-
-iframe{
-	border:0;
-}
 
 
 /* ScrollToTop button */
@@ -487,20 +494,34 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	background-color:#043464;
 }
 .bgc-white{
-	background-color:#ffffff;
+	background-color:#FFFFFF;
 }
+
 /* Text colour styles */
 
 .tc-white{
-	color:#ffffff!important;
+	color:#FFFFFF!important;
 }
+.tc-golden-poppy{
+	color:#F7C103!important;
+}
+.tc-radical-red{
+	color:#FE3D5D!important;
+}
+
 /* Link colour styles */
 
-.ltc-satin-sheen-gold{
-	color:#FF8800!important;
+.ltc-golden-poppy{
+	color:#F7C103!important;
 }
-.ltc-satin-sheen-gold:hover{
-	color:#D27003!important;
+.ltc-golden-poppy:hover{
+	color:#c69a02!important;
+}
+.ltc-radical-red{
+	color:#FE3D5D!important;
+}
+.ltc-radical-red:hover{
+	color:#cb314a!important;
 }
 
 /* Bloc image backgrounds */
@@ -508,17 +529,17 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 
 
 
-/* = Mobile adjustments
+/* = Mobile adjustments 
 -------------------------------------------------------------- */
 @media (max-width: 1024px)
 {
     .bloc{
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 20px; 
+        padding-right: 20px;  
     }
     .bloc.full-width-bloc, .bloc-tile-2.full-width-bloc .container, .bloc-tile-3.full-width-bloc .container, .bloc-tile-4.full-width-bloc .container{
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 0; 
+        padding-right: 0;  
     }
 }
 @media (max-width: 992px) and (min-width: 768px)
@@ -527,15 +548,17 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 		max-width:80%
     }
 	.nav-center.navbar .nav{
-		max-width:100%}
+		max-width:100%
     }
 }
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {.b-parallax{background-attachment:scroll;}}
-@media (max-width: 768px)
+@media (max-width: 991px)
 {
     .container{width:100%;}
     .b-parallax{background-attachment:scroll;}
     .page-container, #hero-bloc{overflow-x: hidden;position: relative;} /* Prevent unwanted side scroll on mobile */
+    .bloc-group, .bloc-group .bloc{display:block;width:100%;}
+    .bloc-tile-2 .container, .bloc-tile-3 .container, .bloc-tile-4 .container{padding-left: 10px;padding-right: 10px;}
 }
 @media (max-width: 767px)
 {
@@ -544,8 +567,8 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
         position:relative;
     }
     h1,h2,h3,h4,h5,h6,p,#disqus_thread{
-        padding-left:10px!important;
-        padding-right:10px!important;
+        padding-left:10px!important; 
+        padding-right:10px!important; 
     }
     #hero-bloc h1{
         font-size:40px;
@@ -555,14 +578,6 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
     }
     #hero-bloc h3{
         font-size:25px;
-    }
-    .bloc{
-        padding-left: 0;
-        padding-right: 0;
-        -webkit-background-size: auto 200%;
-        -moz-background-size: auto 200%;
-        -o-background-size: auto 200%;
-        background-size: auto 200%;
     }
     .b-parallax{
         background-attachment:scroll;
@@ -581,7 +596,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	   transform:none;
 	   -webkit-transform:none;
 	   -ms-transform:none;
-    }
+    }  
     .nav > li{
         margin-top: 0;
         border-bottom:1px solid rgba(0,0,0,.1);
@@ -593,7 +608,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
     .nav > li:hover{
         background:rgba(0,0,0,.08);
     }
-    .dropdown .dropdown a .caret{
+    .dropdown .dropdown a .caret{   
         float: none;
         margin: 5px 0 0 10px!important;
         border: 4px solid black;
@@ -601,7 +616,7 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
         border-right-color: transparent;
         border-left-color: transparent;
     }
-
+    
     #hero-bloc .navbar .nav{
         background:rgba(0,0,0,.8);
     }
@@ -623,36 +638,34 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
     }
     .navbar-brand img{
         max-height: 40px;
-        width:auto;
-        margin: -10px 10px 0 0;
+        width:auto;   
     }
     .nav-invert .navbar-header{
         float: none;
         width:100%;
     }
     .nav-invert .navbar-toggle{
-        float:left;
+        float:left; 
     }
-    .bloc-group .bloc{
-         display:block;
-         width:100%;
-     }
-    .bloc-tile-2 .container, .bloc-tile-3 .container, .bloc-tile-4 .container{
-	   padding-left: 10px;
-	   padding-right: 10px;
+    .bloc{
+        padding-left: 0; 
+        padding-right: 0;
     }
     .bloc-xxl,.bloc-xl,.bloc-lg{
         padding: 40px 0;
     }
     .bloc-sm,.bloc-md{
-        padding-left: 0;
+        padding-left: 0; 
         padding-right: 0;
+    }
+    .bloc-tile-2 .container, .bloc-tile-3 .container, .bloc-tile-4 .container{
+        padding-left:0;padding-right:0;
     }
     .a-block{
         padding:0 10px;
     }
     .btn-dwn{
-       display:none;
+       display:none; 
     }
     .voffset{
         margin-top:5px;
@@ -683,7 +696,19 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	   height: 320px;
     }
 }
-@media (max-width: 420px){
+
+@media (max-width: 400px)
+{    
+    .bloc{
+        padding-left: 0; 
+        padding-right: 0;  
+        -webkit-background-size: auto 200%;
+        -moz-background-size: auto 200%;
+        -o-background-size: auto 200%;
+        background-size: auto 200%;
+    }
+}
+@media (max-width: 767px){
 	.asd{
 	margin-left:17px;
 	float:none;
@@ -693,15 +718,12 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	font-weight:400;
 	margin-left:0%;
 }
-.teeest{
-}
  #bloc-0 h1{
 	font-size: 60px;
 	line-height: 70px;
 }
 #bloc-0 h5{
 	font-size: 30px;
-	line-height: 45px;
 }
 /* = Text Mobile Alignment Classes
 -------------------------------------------------------------- */
@@ -709,3 +731,4 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	text-align:center;
 }
 }
+
