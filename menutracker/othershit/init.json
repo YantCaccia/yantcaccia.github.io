@@ -1,12 +1,16 @@
 {
   "piatti": {
     "pasta e lenticchie": {
-      "data": "11/12/2020",
-      "valutazione": 9
+      "data": "2020-12-11",
+      "punteggioTotale": 9,
+      "votiTotali": 1,
+      "id": 1
     },
     "pasta e pesto": {
-      "data": "10/09/2018",
-      "valutazione": 5
+      "data": "2018-12-11",
+      "punteggioTotale": 9,
+      "votiTotali": 1,
+      "id": 2
     }
   }
 }
