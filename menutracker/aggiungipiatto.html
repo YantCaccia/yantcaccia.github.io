@@ -67,24 +67,29 @@
             var nome = document.getElementById("nomePiatto").value;
             var data = document.getElementById("dataPiatto").value;
 
-            firebase.database().ref('piatti/').orderByChild('id').limitToLast(1).once('value').then((snapshot)=>{
-                snapshot.forEach((snapshot1)=>{ //forEach ma tanto è uno
-                    var lastId = snapshot1.val().id;
-                    firebase.database().ref('piatti/' + nome).set({
-                        "data": data,
-                        "punteggioTotale": 0,
-                        "votiTotali" : 0,
-                        "id": lastId + 1
-                    },(error) => {
-                        if (error) {
-                            // pass
-                        } else {
-                            // callback
-                            window.location.href = 'https://yantcaccia.github.io/menutracker';
-                        }
+            if(nome!=""&&nome!=" "&&nome!=undefined&&nome!=null){
+                firebase.database().ref('piatti/').orderByChild('id').limitToLast(1).once('value').then((snapshot)=>{
+                    snapshot.forEach((snapshot1)=>{ //forEach ma tanto è uno
+                        var lastId = snapshot1.val().id;
+                        firebase.database().ref('piatti/' + nome).set({
+                            "data": data,
+                            "punteggioTotale": 0,
+                            "votiTotali" : 0,
+                            "id": lastId + 1
+                        },(error) => {
+                            if (error) {
+                                // pass
+                            } else {
+                                // callback
+                                window.location.href = 'https://yantcaccia.github.io/menutracker';
+                            }
+                    });
+                    })
                 });
-                })
-            });
+            }
+            else{
+                console.log("t piacess");
+            }
         }
 
     </script>
