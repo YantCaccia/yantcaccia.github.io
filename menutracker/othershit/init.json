@@ -1,0 +1,12 @@
+{
+  "piatti": {
+    "pasta e lenticchie": {
+      "data": "11/12/2020",
+      "valutazione": 9
+    },
+    "pasta e pesto": {
+      "data": "10/09/2018",
+      "valutazione": 5
+    }
+  }
+}
