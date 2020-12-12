@@ -91,7 +91,7 @@
 
             nomeCell.innerHTML = snapshot1.key;
             dataCell.innerHTML = snapshot1.val().data;
-            valutazioneCell.innerHTML = (snapshot1.val().punteggioTotale)/(snapshot1.val().votiTotali);
+            valutazioneCell.innerHTML = Number(((snapshot1.val().punteggioTotale)/(snapshot1.val().votiTotali)).toFixed(1));
             var myLink = "https://yantcaccia.github.io/menutracker/valutapiatto.html?" + snapshot1.val().id;
             linkCell.innerHTML = '<a href="' + myLink + '">Valuta ora!</a>';
         });
