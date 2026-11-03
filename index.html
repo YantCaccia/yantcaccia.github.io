@@ -1,170 +1,152 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
-    
-	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?2560">
-	<link rel="stylesheet" type="text/css" href="style.css?4734">
-	<link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/feather.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Oleo+Script&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Bungee&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Pacifico&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<script src="./js/particles.js"></script>
-	<title>Antonio Cacciapuoti</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antonio Cacciapuoti — Portfolio</title>
+  <meta name="description"
+    content="Designing and implementing solid backend solutions. Studying and exploring AI Engineering.">
+  <meta name="color-scheme" content="light dark">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
-    
-<!-- Analytics -->
- 
-<!-- Analytics END -->
-    
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Match the system theme before first paint to avoid a flash of the wrong mode -->
+  <script>
+    (function () {
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      try { localStorage.removeItem('theme'); } catch (e) { } // drop stale value from the old toggle
+    })();
+  </script>
 </head>
+
 <body>
-<!-- Main container -->
-<div class="page-container">
-    
-<!-- bloc-0 -->
-<div class="bloc b-divider none full-width-bloc b-parallax bgc-dark-midnight-blue d-bloc" id="bloc-0">
-	<div class="container bloc-lg">
-		<div class="row rubberBand-hvr">
-			<div class="col-sm-12">
-				<img style="z-index:100; position: relative;" src="img/lazyload-ph.png" data-src="img/DSC_0639999.jpg" class="mg-md image-resize-mode img-fluid rounded-circle mx-auto d-block lazyload" height="315" width="315" />
-				<h1 style="z-index:100; position: relative;" class="text-center mg-lg tc-white bloc-0-h1">
-					I&rsquo;m Antonio
-				</h1>
-				<h5 style="z-index:100; position: relative;" class="mg-clear text-center bloc-0-h5 tc-white btn-resize-mode">
-					Italian computer science student & creator of <br><a class="ltc-tangerine-yellow rsy" onclick="scrollToTarget('#bloc-rs',this)" data-scroll-speed="1000" href="#">Rocking Square</a>&nbsp;and&nbsp;<a class="stkr" href="#" data-scroll-speed="1000" onclick="scrollToTarget('#bloc-stk',this)">SendToKodi</a>
-				</h5>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- bloc-0 END -->
+  <div class="ambient" aria-hidden="true"></div>
 
-<!-- bloc-1 -->
-<div class="bloc l-bloc" id="bloc-1">
-	<div class="container bloc-lg">
-		<div class="row">
-			<div class="offset-md-2 col-6 col-md-2 col-sm-3 col-lg-2 offset-lg-2">
-				<div class="text-center">
-					<a href="https://twitter.com/yantcaccia" target="_blank"><span class="fa fa-twitter icon-lg"></span></a>
-				</div>
-			</div>
-			<div class="col-6 col-md-2 col-sm-3 col-lg-2">
-				<div class="text-center">
-					<a href="https://www.facebook.com/yant99" target="_blank"><span class="fa fa-facebook icon-lg "></span></a>
-				</div>
-			</div>
-			<div class="col-6 col-md-2 col-sm-3 col-lg-2">
-				<div class="text-center">
-					<a href="https://www.instagram.com/toneelanc" target="_blank"><span class="fa fa-instagram icon-lg"></span></a>
-				</div>
-			</div>
-			<div class="col-6 col-md-2 col-sm-3 col-lg-2">
-				<div class="text-center">
-					<a href="mailto:ya%6Etc%61%63cia@g%6Da%69l%2Ecom"><span class="feather-icon icon-mail icon-lg"></span></a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- bloc-1 END -->
+  <main class="stage" id="top">
 
-<!-- bloc-rs -->
-<div class="bloc l-bloc none" id="bloc-rs">
-	<div class="container bloc-lg">
-		<div class="row">
-			<div class="col-md-6 col-lg-5">
-				<div class="mx-auto d-block blocsapp-device blocsapp-device-iphone6 iphone6-space-grey rsphone">
-					<img src="img/lazyload-ph.png" data-src="img/IMG_6553.PNG" class="img-fluid lazyload" />
-				</div>
-			</div>
-			<div class="align-self-center col-md-6 col-lg-7">
-				<h2 class="mg-md h2-rocking-square-style tc-tangerine-yellow text-sm-center text-center">
-					Rocking Square
-				</h2>
-				<p class="p-2-style text-sm-center text-center">
-					Fun, easy-to-learn, hard-to-stop. Help Mr.Square to avoid blocs falling from the sky. Collect coins to improve your score. Then, repeat. Seems simple, right?<br><br><a style="color: #FFCE00" href="https://rockingsquare.netlify.app/">Try it now on your browser</a>, or download for Android.<br>
-				</p>
-				<div style="margin-top: 50px" class="text-center btnmb text-sm-center text-md-center text-lg-center">
-					<a href="https://play.google.com/store/apps/details?id=com.yantcaccia.project1&amp;hl=it" class="float-md-none" target="_blank">
-					<img src="gpb.png" height="60">
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- bloc-rs END -->
+    <!-- Left column: Digital Twin preview frame -->
+    <section class="preview glass" aria-label="Digital Twin preview">
+      <div class="preview__frame">
+        <img src="assets/portrait.jpeg" alt="Portrait of Antonio Cacciapuoti" width="768" height="1143"
+          fetchpriority="high" decoding="async">
+      </div>
+      <div class="preview__caption">
+        <div>
+          <p class="preview__name">Antonio Cacciapuoti</p>
+          <p class="preview__role">Alpitour World</p>
+        </div>
+        <span class="chip">Software Engineer</span>
+      </div>
+    </section>
 
-<!-- bloc-stk -->
-<div class="bloc l-bloc" id="bloc-stk">
-	<div class="container bloc-lg">
-		<div class="row">
-			<div class="col-md-6 col-lg-5 order-md-1 offset-sm-0 order-sm-0">
-				<div class="mx-auto d-block blocsapp-device blocsapp-device-iphone6 iphone6-space-grey stkphone">
-					<img src="img/lazyload-ph.png" data-src="img/Screenshot_20180409-003343.png" class="img-fluid lazyload" />
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-7 offset-sm-0 order-sm-0 align-self-center">
-				<h2 class="stk-h2 tc-radical-red btn-resize-mode h2-style text-sm-center mg-lg-sm mg-lg text-center">
-					SendToKodi
-				</h2>
-				<p class="p-style float-lg-none text-sm-center mg-lg text-lg-center text-center">
-					SendToKodi is an app available on your Android device that lets you send almost any video stream available on the web to your Kodi machine with a tap.<br>Enjoy your favourite contents on your favourite device!<br>
-				</p>
-				<div class="text-center text-lg-center container-div-style">
-					<a href="https://play.google.com/store/apps/details?id=com.yantcaccia.stk&amp;hl=en_US" target="_blank">
-					<img src="gpb.png" height="60">
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- bloc-stk END -->
+    <!-- Right column: intro + actions -->
+    <div class="content">
+      <div class="intro">
+        <h1 class="intro__name">Antonio Cacciapuoti</h1>
+        <p class="intro__bio">
+          Designing, implementing and managing solid <strong><i>backend</i></strong> solutions from requirements elicitation to production deployment.
+        </p>
+        <p class="intro__bio">
+          Studying and exploring <strong>AI Engineering</strong>.
+        </p>
+        </p>
+      </div>
 
-<!-- ScrollToTop Button -->
-<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><span class="fa fa-chevron-up"></span></a>
-<!-- ScrollToTop Button END-->
+      <article class="twin glass">
+        <div class="twin__icon" aria-hidden="true">
+          <!-- PLACEHOLDER: swap for an avatar <img> if preferred -->
+          <svg class="icon" viewBox="0 0 24 24">
+            <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+            <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+            <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
+            <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
+            <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+            <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+            <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
+            <path d="M6 18a4 4 0 0 1-1.967-.516" />
+            <path d="M19.967 17.484A4 4 0 0 1 18 18" />
+            <path d="M12 5v13" />
+          </svg>
+        </div>
 
-<div class="col-sm-12" id="particles"
-style="position: absolute;
-z-index: 50;
-width: 100%;
-height: 100%;
-top: 0;
-left: 0; overflow: hidden;"></div>
+        <div class="twin__body">
+          <h2 class="twin__title">
+            Talk to my AI Digital Twin
+          </h2>
+          <p class="twin__desc">
+            An interactive conversational persona synthesized from Antonio's CV and professional experience.
+          </p>
+        </div>
 
+        <a class="btn btn--primary" href="https://digital-twin-fsm9.onrender.com/" target="_blank">
+          <span>Start Conversation</span>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+      </article>
 
-</div>
-<!-- Main container END -->
-    
+      <div class="actions">
+        <!-- TODO: set the real LinkedIn profile URL -->
+        <a class="btn btn--glass glass" href="https://www.linkedin.com/in/antonio-cacciapuoti-45a883220/" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--accent icon--fill" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+          <span>Connect on LinkedIn</span>
+          <svg class="icon icon--trail" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 3h6v6" />
+            <path d="M10 14 21 3" />
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          </svg>
+        </a>
 
-<!-- Additional JS -->
-<script src="./js/jquery-3.3.1.min.js?7486"></script>
-<script src="./js/bootstrap.bundle.min.js?4922"></script>
-<script src="./js/blocs.min.js?8688"></script>
-<script src="./js/lazysizes.min.js" defer></script>
-<script src="./js/jquery.scrollify.js"></script>
-<!-- Additional JS END -->
+        <!-- Split button: most of it opens the mail client, the icon on the right only copies -->
+        <div class="split glass">
+          <a class="split__main" href="mailto:yantcaccia@gmail.com" data-tip="Say hi! Opens your mail app"
+            data-tip-emoji="👋">
+            <svg class="icon icon--accent" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+            <span>yantcaccia@gmail.com</span>
+          </a>
+          <button class="split__copy" id="copyEmail" type="button" data-email="yantcaccia@gmail.com"
+            data-tip="Copy address" data-tip-emoji="📋" aria-label="Copy email address">
+            <svg class="icon icon--copy" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="8" y="8" width="14" height="14" rx="2" />
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+            </svg>
+            <svg class="icon icon--check" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
 
-<script type="text/javascript">
-	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {} else {
-		particlesJS.load("particles", "./js/particlesjs-config.json");
-    }
-</script>
+  <footer class="footer">
+    <span class="footer__dot" aria-hidden="true"></span>
+    <span>© <span id="year">2026</span> Antonio Cacciapuoti. All rights reserved.</span>
+  </footer>
 
+  <!-- Custom tooltip (positioned by script.js) + screen-reader announcements -->
+  <div class="tip" id="tip" role="tooltip" aria-hidden="true">
+    <span class="tip__emoji" aria-hidden="true"></span>
+    <span class="tip__text"></span>
+  </div>
+  <div class="sr-only" id="liveStatus" role="status" aria-live="polite"></div>
 
-<!-- Preloader -->
-<div id="page-loading-blocs-notifaction" class="page-preloader"></div>
-<!-- Preloader END -->
-
+  <script src="script.js"></script>
 </body>
+
 </html>
