@@ -1,0 +1,15 @@
+/* Match the existing single-column breakpoint; preserve desktop layout. */
+.mobile-role {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .preview {
+    display: none;
+  }
+
+  .mobile-role {
+    display: inline-flex;
+    margin-top: 0.75rem;
+  }
+}
